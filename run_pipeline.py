@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 from difflib import SequenceMatcher
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import parse_qs, urljoin, urlparse
+from urllib.parse import parse_qs, urljoin, urlparse, urlunparse
 
 import requests
 from openai import OpenAI
@@ -34,6 +34,10 @@ class LinkParser(HTMLParser):
         if tag.lower()=="a":
             for k,v in attrs:
                 if k.lower()=="href" and v: self.links.append(v)
+
+def canonicalize_url(url):
+    p=urlparse(url)
+    return urlunparse((p.scheme,p.netloc,p.path,p.params,p.query,""))
 
 def slugify(url):
     p=urlparse(url); raw=f"{p.netloc}{p.path}_{p.query}".strip("_")
@@ -84,12 +88,12 @@ def load_seed_urls(cli,target_date):
     seeds=list(cli or [])
     if not cli and Path("urls.txt").exists(): seeds += [x.strip() for x in Path("urls.txt").read_text(encoding="utf-8").splitlines() if x.strip() and not x.startswith("#")]
     compact=target_date.replace("-",""); seeds += [BASE_URL,f"{BASE_URL}?date={compact}",f"{BASE_URL}tx/10012.php?date={target_date}",f"{BASE_URL}tx/7.php"]
-    return list(dict.fromkeys(seeds))
+    return list(dict.fromkeys(canonicalize_url(x) for x in seeds))
 
 def extract_links(html,base):
     p=LinkParser(); p.feed(html or ""); out=[]
     for href in p.links:
-        u=urljoin(base,href); q=urlparse(u)
+        u=canonicalize_url(urljoin(base,href)); q=urlparse(u)
         if q.scheme in {"http","https"} and q.netloc.lower() in {"hh520.com","www.hh520.com"}: out.append(u)
     return out
 
@@ -108,6 +112,9 @@ def classify_supported_url(url,date):
     return None
 
 def discover(html,base,date):
+    base_path=urlparse(base).path
+    if base_path in {"/tx/10015.php","/tx/10016.php"}:
+        return []
     out=[]; seen=set()
     for u in extract_links(html,base):
         c=classify_supported_url(u,date)
@@ -123,7 +130,7 @@ def main():
     for u in load_seed_urls(a.urls,a.date): queue.append((u,classify_supported_url(u,a.date) or "seed","seed")); queued.add(u)
     docs=[]; vals=[]; discoveries=[]; processed=set(); failures=[]
     while queue and len(processed)<a.max_pages:
-        url,cat,origin=queue.popleft()
+        url,cat,origin=queue.popleft(); url=canonicalize_url(url)
         if url in processed: continue
         processed.add(url); source=None
         if not a.skip_source_validation:
@@ -138,6 +145,7 @@ def main():
         elif source: vals.append({"url":url,"result":"SOURCE_FETCH_FAILED","error":source.get("error")})
         data=response.get("data",{}); html=data.get("rawHtml") or data.get("html") or (source or {}).get("html","")
         for nu,nc in discover(html,url,a.date):
+            nu=canonicalize_url(nu)
             if nu not in queued and nu not in processed: queued.add(nu); queue.append((nu,nc,url)); discoveries.append({"url":nu,"category":nc,"discovered_from":url})
     counts={}
     for x in docs: counts[x["category"]]=counts.get(x["category"],0)+1
