@@ -1,0 +1,28 @@
+{
+  "url": "https://www.hh520.com/tx/10016.php?code=20260902014",
+  "category": "predicted_lineup",
+  "discovered_from": "https://www.hh520.com/tx/10016.php?code=20260902013",
+  "fetched_at": "2026-09-02T02:28:41.312201+00:00",
+  "snapshot_id": "20260902T020340Z",
+  "response": {
+    "success": true,
+    "data": {
+      "markdown": "错误: 未找到对应日期的比赛数据",
+      "rawHtml": "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body>错误: 未找到对应日期的比赛数据</body></html>",
+      "metadata": {
+        "scrapeId": "01a05ff2-728f-719b-a566-e8dffe0dcbf9",
+        "sourceURL": "https://www.hh520.com/tx/10016.php?code=20260902014",
+        "url": "https://www.hh520.com/tx/10016.php?code=20260902014",
+        "statusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "timezone": "America/New_York",
+        "proxyUsed": "basic",
+        "indexId": "0f8566ed-18c3-486b-b820-58e55013c9d9",
+        "creditsUsed": 1,
+        "concurrencyLimited": false
+      },
+      "warning": "The engine used does not support the following features: disableAdblock -- your scrape may be partial.",
+      "html": "<html><body>错误: 未找到对应日期的比赛数据</body></html>"
+    }
+  }
+}

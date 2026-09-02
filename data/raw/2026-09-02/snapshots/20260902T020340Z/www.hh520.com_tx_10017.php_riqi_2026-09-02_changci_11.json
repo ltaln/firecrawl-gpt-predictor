@@ -1,0 +1,28 @@
+{
+  "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-02&changci=11",
+  "category": "score_odds_changes",
+  "discovered_from": "https://www.hh520.com/xi.php?id=6106",
+  "fetched_at": "2026-09-02T02:14:59.855497+00:00",
+  "snapshot_id": "20260902T020340Z",
+  "response": {
+    "success": true,
+    "data": {
+      "markdown": "**错误：** 未找到 2026-09-02 第 11 场的比赛数据。",
+      "rawHtml": "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><div style=\"color:#c62828;background:#ffebee;padding:20px;border-radius:4px;max-width:800px;margin:20px auto;\"><strong>错误：</strong> 未找到 2026-09-02 第 11 场的比赛数据。</div></body></html>",
+      "metadata": {
+        "scrapeId": "01a05fe5-e560-76ce-ba76-85849d89c7d0",
+        "sourceURL": "https://www.hh520.com/tx/10017.php?riqi=2026-09-02&changci=11",
+        "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-02&changci=11",
+        "statusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "timezone": "America/New_York",
+        "proxyUsed": "basic",
+        "indexId": "d941bc98-836b-4dd2-aac6-0accd0cca990",
+        "creditsUsed": 1,
+        "concurrencyLimited": false
+      },
+      "warning": "The engine used does not support the following features: disableAdblock -- your scrape may be partial.",
+      "html": "<html><body><div style=\"color:#c62828;background:#ffebee;padding:20px;border-radius:4px;max-width:800px;margin:20px auto;\"><strong>错误：</strong> 未找到 2026-09-02 第 11 场的比赛数据。</div></body></html>"
+    }
+  }
+}
