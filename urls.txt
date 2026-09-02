@@ -1,4 +1,11 @@
+# 稳定入口；其它比赛相关地址由 run_pipeline.py 按目标日期自动发现并生成
 https://www.hh520.com/
-https://www.hh520.com/xi.php?id=6086
-https://www.hh520.com/tx/10013.php?date=2026-09-01&changci=1
-https://www.hh520.com/tx/10016.php?code=20260901001
+https://www.hh520.com/tx/7.php
+
+# 动态规则（不要写死具体比赛）：
+# https://www.hh520.com/xi.php?id=<MATCH_ID>
+# https://www.hh520.com/tx/10017.php?riqi=<YYYY-MM-DD>&changci=<N>
+# https://www.hh520.com/tx/10016.php?code=<YYYYMMDDCCC>
+# https://www.hh520.com/tx/10015.php?code=<YYYYMMDDCCC>
+# https://www.hh520.com/tx/10012.php?date=<YYYY-MM-DD>
+# https://www.hh520.com/tx/10013.php?date=<YYYY-MM-DD>&changci=<N>
