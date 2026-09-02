@@ -2,16 +2,18 @@ import argparse
 import json
 import os
 import re
+from collections import deque
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urljoin, urlparse
 
 import requests
 from openai import OpenAI
 
 FIRECRAWL_ENDPOINT = "https://api.firecrawl.dev/v2/scrape"
+BASE_URL = "https://www.hh520.com/"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36"
 
 
@@ -34,6 +36,19 @@ class VisibleTextParser(HTMLParser):
             text = re.sub(r"\s+", " ", data).strip()
             if text:
                 self.parts.append(text)
+
+
+class LinkParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.links = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag.lower() != "a":
+            return
+        for key, value in attrs:
+            if key.lower() == "href" and value:
+                self.links.append(value)
 
 
 def slugify(url: str) -> str:
@@ -130,17 +145,109 @@ def validate_source(url: str, source: dict, firecrawl: dict) -> dict:
     }
 
 
-def load_urls(cli_urls: list[str] | None) -> list[str]:
+def load_seed_urls(cli_urls: list[str] | None, target_date: str) -> list[str]:
+    seeds = []
     if cli_urls:
-        return cli_urls
-    return [line.strip() for line in Path("urls.txt").read_text(encoding="utf-8").splitlines() if line.strip() and not line.startswith("#")]
+        seeds.extend(cli_urls)
+    else:
+        path = Path("urls.txt")
+        if path.exists():
+            seeds.extend(
+                line.strip()
+                for line in path.read_text(encoding="utf-8").splitlines()
+                if line.strip() and not line.startswith("#")
+            )
+    compact_date = target_date.replace("-", "")
+    seeds.extend([
+        BASE_URL,
+        f"{BASE_URL}?date={compact_date}",
+        f"{BASE_URL}tx/10012.php?date={target_date}",
+        f"{BASE_URL}tx/7.php",
+    ])
+    seen = set()
+    ordered = []
+    for url in seeds:
+        if url not in seen:
+            seen.add(url)
+            ordered.append(url)
+    return ordered
+
+
+def extract_links(html: str, base_url: str) -> list[str]:
+    parser = LinkParser()
+    parser.feed(html or "")
+    result = []
+    for href in parser.links:
+        absolute = urljoin(base_url, href)
+        p = urlparse(absolute)
+        if p.scheme in {"http", "https"} and p.netloc.lower() in {"hh520.com", "www.hh520.com"}:
+            result.append(absolute)
+    return result
+
+
+def classify_supported_url(url: str, target_date: str) -> str | None:
+    p = urlparse(url)
+    path = p.path
+    q = parse_qs(p.query)
+    compact = target_date.replace("-", "")
+
+    if path in {"", "/"}:
+        date_value = (q.get("date") or [""])[0]
+        if not date_value or date_value == compact:
+            return "match_list"
+        return None
+
+    if path == "/xi.php" and (q.get("id") or [""])[0].isdigit():
+        return "mixed_data"
+
+    if path == "/tx/10017.php":
+        if (q.get("riqi") or [""])[0] == target_date and (q.get("changci") or [""])[0].isdigit():
+            return "score_odds_changes"
+        return None
+
+    if path in {"/tx/10016.php", "/tx/10015.php"}:
+        code = (q.get("code") or [""])[0]
+        if re.fullmatch(r"\d{11}", code) and code.startswith(compact):
+            return "predicted_lineup" if path.endswith("10016.php") else "historical_lineup_ratings"
+        return None
+
+    if path == "/tx/10012.php":
+        if (q.get("date") or [""])[0] == target_date:
+            return "daily_asian_handicap_summary"
+        return None
+
+    if path == "/tx/10013.php":
+        if (q.get("date") or [""])[0] == target_date and (q.get("changci") or [""])[0].isdigit():
+            return "asian_handicap_changes"
+        return None
+
+    if path == "/tx/7.php":
+        return "internal_model_analysis"
+
+    return None
+
+
+def discover_supported_urls(html: str, base_url: str, target_date: str) -> list[tuple[str, str]]:
+    found = []
+    seen = set()
+    for url in extract_links(html, base_url):
+        category = classify_supported_url(url, target_date)
+        if category and url not in seen:
+            seen.add(url)
+            found.append((url, category))
+    return found
 
 
 def build_prompt(target_date: str, scraped_docs: list[dict]) -> str:
     compact = []
     for item in scraped_docs:
         data = item.get("response", {}).get("data", {})
-        compact.append({"url": item["url"], "metadata": data.get("metadata", {}), "markdown": data.get("markdown", "")})
+        compact.append({
+            "url": item["url"],
+            "category": item.get("category"),
+            "metadata": data.get("metadata", {}),
+            "markdown": data.get("markdown", ""),
+        })
     return f"请只依据以下抓取数据分析 {target_date} 的足球比赛，不要补充未抓取信息。\n{json.dumps(compact, ensure_ascii=False)}"
 
 
@@ -150,6 +257,7 @@ def main() -> None:
     parser.add_argument("--urls", nargs="*")
     parser.add_argument("--scrape-only", action="store_true")
     parser.add_argument("--skip-source-validation", action="store_true")
+    parser.add_argument("--max-pages", type=int, default=500)
     args = parser.parse_args()
 
     firecrawl_key = os.environ.get("FIRECRAWL_API_KEY")
@@ -158,7 +266,6 @@ def main() -> None:
     if not firecrawl_key:
         raise SystemExit("Missing FIRECRAWL_API_KEY")
 
-    urls = load_urls(args.urls)
     run_started = datetime.now(timezone.utc)
     snapshot_id = run_started.strftime("%Y%m%dT%H%M%SZ")
     raw_dir = Path("data/raw") / args.date / "snapshots" / snapshot_id
@@ -168,9 +275,24 @@ def main() -> None:
     source_dir.mkdir(parents=True, exist_ok=True)
     pred_dir.mkdir(parents=True, exist_ok=True)
 
+    queue = deque()
+    queued = set()
+    for seed in load_seed_urls(args.urls, args.date):
+        category = classify_supported_url(seed, args.date) or "seed"
+        queue.append((seed, category, "seed"))
+        queued.add(seed)
+
     scraped_docs = []
     validations = []
-    for url in urls:
+    discovered_records = []
+    processed = set()
+
+    while queue and len(processed) < args.max_pages:
+        url, category, discovered_from = queue.popleft()
+        if url in processed:
+            continue
+        processed.add(url)
+
         source = None
         if not args.skip_source_validation:
             print(f"Direct source fetch: {url}")
@@ -180,9 +302,16 @@ def main() -> None:
             except Exception as exc:
                 source = {"error": str(exc), "fetched_at": datetime.now(timezone.utc).isoformat()}
 
-        print(f"Firecrawl scrape: {url}")
+        print(f"Firecrawl scrape [{category}]: {url}")
         response = scrape_url(url, firecrawl_key)
-        record = {"url": url, "fetched_at": datetime.now(timezone.utc).isoformat(), "snapshot_id": snapshot_id, "response": response}
+        record = {
+            "url": url,
+            "category": category,
+            "discovered_from": discovered_from,
+            "fetched_at": datetime.now(timezone.utc).isoformat(),
+            "snapshot_id": snapshot_id,
+            "response": response,
+        }
         scraped_docs.append(record)
         (raw_dir / f"{slugify(url)}.json").write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
 
@@ -191,32 +320,66 @@ def main() -> None:
         elif source:
             validations.append({"url": url, "result": "SOURCE_FETCH_FAILED", "error": source.get("error")})
 
+        data = response.get("data", {})
+        discovery_html = data.get("rawHtml") or data.get("html") or (source or {}).get("html", "")
+        for new_url, new_category in discover_supported_urls(discovery_html, url, args.date):
+            if new_url not in queued and new_url not in processed:
+                queued.add(new_url)
+                queue.append((new_url, new_category, url))
+                discovered_records.append({"url": new_url, "category": new_category, "discovered_from": url})
+
     validation_report = {
         "date": args.date,
         "snapshot_id": snapshot_id,
         "validated_urls": len(validations),
         "passed": sum(1 for x in validations if x.get("result") == "PASS"),
+        "checked": sum(1 for x in validations if x.get("result") == "CHECK"),
         "results": validations,
     }
     validation_path = raw_dir / "source_validation.json"
     validation_path.write_text(json.dumps(validation_report, ensure_ascii=False, indent=2), encoding="utf-8")
 
+    category_counts = {}
+    for item in scraped_docs:
+        category_counts[item["category"]] = category_counts.get(item["category"], 0) + 1
+
+    discovery_report = {
+        "date": args.date,
+        "snapshot_id": snapshot_id,
+        "seed_urls": load_seed_urls(args.urls, args.date),
+        "processed_pages": len(scraped_docs),
+        "category_counts": category_counts,
+        "discovered": discovered_records,
+        "max_pages": args.max_pages,
+        "truncated": bool(queue),
+    }
+    discovery_path = raw_dir / "url_discovery.json"
+    discovery_path.write_text(json.dumps(discovery_report, ensure_ascii=False, indent=2), encoding="utf-8")
+
     scrape_manifest = {
         "date": args.date,
         "snapshot_id": snapshot_id,
         "started_at": run_started.isoformat(),
-        "urls": urls,
         "scraped_pages": len(scraped_docs),
+        "category_counts": category_counts,
         "source_validation": str(validation_path),
+        "url_discovery": str(discovery_path),
         "mode": "scrape-only" if args.scrape_only or not openai_key else "scrape-and-predict",
-        "files": [str(raw_dir / f"{slugify(u)}.json") for u in urls],
+        "files": [str(raw_dir / f"{slugify(x['url'])}.json") for x in scraped_docs],
     }
     manifest_path = raw_dir / "manifest.json"
     manifest_path.write_text(json.dumps(scrape_manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     latest_manifest = Path("data/raw") / args.date / "latest.json"
-    latest_manifest.write_text(json.dumps({"date": args.date, "snapshot_id": snapshot_id, "snapshot_dir": str(raw_dir), "manifest": str(manifest_path), "source_validation": str(validation_path)}, ensure_ascii=False, indent=2), encoding="utf-8")
+    latest_manifest.write_text(json.dumps({
+        "date": args.date,
+        "snapshot_id": snapshot_id,
+        "snapshot_dir": str(raw_dir),
+        "manifest": str(manifest_path),
+        "source_validation": str(validation_path),
+        "url_discovery": str(discovery_path),
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    print(json.dumps(validation_report, ensure_ascii=False, indent=2))
+    print(json.dumps({"validation": validation_report, "discovery": discovery_report}, ensure_ascii=False, indent=2))
     if args.scrape_only or not openai_key:
         return
 
