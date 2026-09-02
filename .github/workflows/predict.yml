@@ -1,0 +1,59 @@
+name: Firecrawl GPT Prediction
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "比赛日期 YYYY-MM-DD"
+        required: true
+        default: "2026-09-01"
+      urls:
+        description: "可选：空格分隔 URL；留空使用 urls.txt"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  predict:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline with default URLs
+        if: ${{ inputs.urls == '' }}
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.6-sol' }}
+        run: python run_pipeline.py --date "${{ inputs.date }}"
+
+      - name: Run pipeline with custom URLs
+        if: ${{ inputs.urls != '' }}
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.6-sol' }}
+        run: python run_pipeline.py --date "${{ inputs.date }}" --urls ${{ inputs.urls }}
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Add prediction results for ${{ inputs.date }}"
+            git push
+          fi
