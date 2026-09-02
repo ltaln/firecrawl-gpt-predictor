@@ -1,4 +1,4 @@
-name: Firecrawl Scrape / GPT Prediction
+name: Firecrawl Data Collection
 
 on:
   workflow_dispatch:
@@ -11,17 +11,11 @@ on:
         description: "可选：空格分隔 URL；留空使用自动发现"
         required: false
         default: ""
-      scrape_only:
-        description: "仅抓取，不调用 OpenAI"
-        required: true
-        type: boolean
-        default: true
   push:
     branches: [main]
     paths:
       - "run_pipeline.py"
       - "build_match_packages.py"
-      - "predict_match_packages.py"
       - "urls.txt"
       - ".github/workflows/predict.yml"
 
@@ -52,18 +46,13 @@ jobs:
       - name: Run scrape, discovery and source validation
         env:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.6-sol' }}
         run: |
           DATE="${{ github.event.inputs.date || '2026-09-02' }}"
           URLS="${{ github.event.inputs.urls || '' }}"
-          SCRAPE_ONLY="${{ github.event.inputs.scrape_only || 'true' }}"
-          EXTRA=""
-          if [ "$SCRAPE_ONLY" = "true" ]; then EXTRA="--scrape-only"; fi
           if [ -n "$URLS" ]; then
-            python run_pipeline.py --date "$DATE" $EXTRA --urls $URLS
+            python run_pipeline.py --date "$DATE" --urls $URLS
           else
-            python run_pipeline.py --date "$DATE" $EXTRA
+            python run_pipeline.py --date "$DATE"
           fi
 
       - name: Build per-match GPT packages
@@ -87,21 +76,6 @@ jobs:
         env:
           DATE_VALUE: ${{ github.event.inputs.date || '2026-09-02' }}
 
-      - name: Run GPT predictions when enabled
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.6-sol' }}
-          DATE_VALUE: ${{ github.event.inputs.date || '2026-09-02' }}
-          SCRAPE_ONLY: ${{ github.event.inputs.scrape_only || 'true' }}
-        run: |
-          if [ "$SCRAPE_ONLY" = "true" ]; then
-            echo "Scrape-only mode: prediction skipped"
-          elif [ -z "$OPENAI_API_KEY" ]; then
-            echo "OPENAI_API_KEY is not configured: prediction skipped"
-          else
-            python predict_match_packages.py --date "$DATE_VALUE" --model "$OPENAI_MODEL"
-          fi
-
       - name: Commit results
         run: |
           DATE="${{ github.event.inputs.date || '2026-09-02' }}"
@@ -111,7 +85,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes"
           else
-            git commit -m "Add scrape, match packages and predictions for $DATE"
+            git commit -m "Add scrape validation and match packages for $DATE"
             for attempt in 1 2 3; do
               if git push; then
                 exit 0
