@@ -6,9 +6,9 @@ on:
       date:
         description: "比赛日期 YYYY-MM-DD"
         required: true
-        default: "2026-09-01"
+        default: "2026-09-02"
       urls:
-        description: "可选：空格分隔 URL；留空使用 urls.txt"
+        description: "可选：空格分隔 URL；留空使用自动发现"
         required: false
         default: ""
       scrape_only:
@@ -20,10 +20,15 @@ on:
     branches: [main]
     paths:
       - "run_pipeline.py"
+      - "urls.txt"
       - ".github/workflows/predict.yml"
 
 permissions:
   contents: write
+
+concurrency:
+  group: firecrawl-scrape-main
+  cancel-in-progress: false
 
 jobs:
   run:
@@ -42,13 +47,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run scrape and source validation
+      - name: Run scrape, discovery and source validation
         env:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.6-sol' }}
         run: |
-          DATE="${{ github.event.inputs.date || '2026-09-01' }}"
+          DATE="${{ github.event.inputs.date || '2026-09-02' }}"
           URLS="${{ github.event.inputs.urls || '' }}"
           SCRAPE_ONLY="${{ github.event.inputs.scrape_only || 'true' }}"
           EXTRA=""
@@ -61,7 +66,7 @@ jobs:
 
       - name: Commit results
         run: |
-          DATE="${{ github.event.inputs.date || '2026-09-01' }}"
+          DATE="${{ github.event.inputs.date || '2026-09-02' }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/
