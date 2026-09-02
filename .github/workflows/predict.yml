@@ -16,6 +16,11 @@ on:
         required: true
         type: boolean
         default: true
+  push:
+    branches: [main]
+    paths:
+      - "run_pipeline.py"
+      - ".github/workflows/predict.yml"
 
 permissions:
   contents: write
@@ -37,37 +42,33 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run with default URLs
-        if: ${{ inputs.urls == '' }}
+      - name: Run scrape and source validation
         env:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.6-sol' }}
         run: |
+          DATE="${{ github.event.inputs.date || '2026-09-01' }}"
+          URLS="${{ github.event.inputs.urls || '' }}"
+          SCRAPE_ONLY="${{ github.event.inputs.scrape_only || 'true' }}"
           EXTRA=""
-          if [ "${{ inputs.scrape_only }}" = "true" ]; then EXTRA="--scrape-only"; fi
-          python run_pipeline.py --date "${{ inputs.date }}" $EXTRA
-
-      - name: Run with custom URLs
-        if: ${{ inputs.urls != '' }}
-        env:
-          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.6-sol' }}
-        run: |
-          EXTRA=""
-          if [ "${{ inputs.scrape_only }}" = "true" ]; then EXTRA="--scrape-only"; fi
-          python run_pipeline.py --date "${{ inputs.date }}" $EXTRA --urls ${{ inputs.urls }}
+          if [ "$SCRAPE_ONLY" = "true" ]; then EXTRA="--scrape-only"; fi
+          if [ -n "$URLS" ]; then
+            python run_pipeline.py --date "$DATE" $EXTRA --urls $URLS
+          else
+            python run_pipeline.py --date "$DATE" $EXTRA
+          fi
 
       - name: Commit results
         run: |
+          DATE="${{ github.event.inputs.date || '2026-09-01' }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/
           if git diff --cached --quiet; then
             echo "No changes"
           else
-            git commit -m "Add scrape results for ${{ inputs.date }}"
+            git commit -m "Add scrape validation results for $DATE"
             for attempt in 1 2 3; do
               if git push; then
                 exit 0
