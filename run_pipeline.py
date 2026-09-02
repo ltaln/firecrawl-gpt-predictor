@@ -100,7 +100,9 @@ def main() -> None:
         raise SystemExit("Missing FIRECRAWL_API_KEY")
 
     urls = load_urls(args.urls)
-    raw_dir = Path("data/raw") / args.date
+    run_started = datetime.now(timezone.utc)
+    snapshot_id = run_started.strftime("%Y%m%dT%H%M%SZ")
+    raw_dir = Path("data/raw") / args.date / "snapshots" / snapshot_id
     pred_dir = Path("data/predictions")
     raw_dir.mkdir(parents=True, exist_ok=True)
     pred_dir.mkdir(parents=True, exist_ok=True)
@@ -112,6 +114,7 @@ def main() -> None:
         record = {
             "url": url,
             "fetched_at": datetime.now(timezone.utc).isoformat(),
+            "snapshot_id": snapshot_id,
             "response": response,
         }
         scraped_docs.append(record)
@@ -121,6 +124,8 @@ def main() -> None:
 
     scrape_manifest = {
         "date": args.date,
+        "snapshot_id": snapshot_id,
+        "started_at": run_started.isoformat(),
         "urls": urls,
         "scraped_pages": len(scraped_docs),
         "mode": "scrape-only" if args.scrape_only or not openai_key else "scrape-and-predict",
@@ -128,6 +133,21 @@ def main() -> None:
     }
     manifest_path = raw_dir / "manifest.json"
     manifest_path.write_text(json.dumps(scrape_manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    latest_manifest = Path("data/raw") / args.date / "latest.json"
+    latest_manifest.write_text(
+        json.dumps(
+            {
+                "date": args.date,
+                "snapshot_id": snapshot_id,
+                "snapshot_dir": str(raw_dir),
+                "manifest": str(manifest_path),
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
 
     if args.scrape_only or not openai_key:
         print(f"Firecrawl complete: {len(scraped_docs)} pages saved under {raw_dir}")
@@ -141,16 +161,17 @@ def main() -> None:
         input=build_prompt(args.date, scraped_docs),
     )
     text = response.output_text
-    out_path = pred_dir / f"{args.date}.md"
+    out_path = pred_dir / f"{args.date}-{snapshot_id}.md"
     out_path.write_text(text, encoding="utf-8")
 
     prediction_manifest = {
         "date": args.date,
+        "snapshot_id": snapshot_id,
         "model": model,
         "urls": urls,
         "prediction_file": str(out_path),
     }
-    (pred_dir / f"{args.date}.json").write_text(
+    (pred_dir / f"{args.date}-{snapshot_id}.json").write_text(
         json.dumps(prediction_manifest, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
