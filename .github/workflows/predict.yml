@@ -26,6 +26,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -66,5 +68,12 @@ jobs:
             echo "No changes"
           else
             git commit -m "Add scrape results for ${{ inputs.date }}"
+            for attempt in 1 2 3; do
+              if git push; then
+                exit 0
+              fi
+              echo "Push conflicted; rebasing onto latest main (attempt $attempt)"
+              git pull --rebase origin main
+            done
             git push
           fi
