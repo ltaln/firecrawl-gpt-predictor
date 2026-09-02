@@ -1,0 +1,28 @@
+{
+  "url": "https://www.hh520.com/tx/10013.php?date=2026-09-02&changci=3",
+  "category": "asian_handicap_changes",
+  "discovered_from": "https://www.hh520.com/tx/7.php",
+  "fetched_at": "2026-09-02T07:59:20.966943+00:00",
+  "snapshot_id": "20260902T075535Z",
+  "response": {
+    "success": true,
+    "data": {
+      "markdown": "没有找到日期 2026-09-02 场次 3 的任何数据。",
+      "rawHtml": "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body><p>没有找到日期 2026-09-02 场次 3 的任何数据。</p></body></html>",
+      "metadata": {
+        "scrapeId": "01a06121-2e3f-76aa-8c20-3b782fc85f28",
+        "sourceURL": "https://www.hh520.com/tx/10013.php?date=2026-09-02&changci=3",
+        "url": "https://www.hh520.com/tx/10013.php?date=2026-09-02&changci=3",
+        "statusCode": 200,
+        "contentType": "text/html; charset=utf-8",
+        "timezone": "America/New_York",
+        "proxyUsed": "basic",
+        "indexId": "d335daae-7667-4aef-9126-c9e21e82beaf",
+        "creditsUsed": 1,
+        "concurrencyLimited": false
+      },
+      "warning": "The engine used does not support the following features: disableAdblock -- your scrape may be partial.",
+      "html": "<html><body><p>没有找到日期 2026-09-02 场次 3 的任何数据。</p></body></html>"
+    }
+  }
+}

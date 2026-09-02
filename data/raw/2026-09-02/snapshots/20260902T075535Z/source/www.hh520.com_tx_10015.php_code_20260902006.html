@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- ===== 固定视口宽度为 980px，模拟桌面版 ===== -->
+    <meta name="viewport" content="width=980">
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+    <meta name="robots" content="max-image-preview:large">
+    <title>乌迪内斯 vs 威尼斯 历史首发数据_2026-09-02_皇后体育</title>
+    <meta name="description" content="乌迪内斯 vs 威尼斯 历史比赛首发阵容、身价、评分数据，包含教练、阵型及近期表现。">
+    <meta name="keywords" content="乌迪内斯,威尼斯,首发,阵容,身价,评分,历史对阵,皇后体育">
+    
+    <!-- ===== 引入网站顶部所需的外部资源 ===== -->
+    <link rel="stylesheet" href="https://www.hh520.com/static/css/print.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="https://www.hh520.com/static/css/basic.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="https://www.hh520.com/static/css/desktop.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="https://www.hh520.com/static/css/tablet.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="https://www.hh520.com/static/css/mobile.min.css" type="text/css" media="all">
+    <script src="https://www.hh520.com/static/js/jquery.min.js"></script>
+
+    <style>
+        /* ===== 全局强制，防止溢出，模拟桌面版 ===== */
+        * {
+            box-sizing: border-box !important;
+            max-width: 100% !important;
+        }
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow-x: hidden !important;
+        }
+        /* 强制所有容器不超过 980px，并居中 */
+        header .container,
+        .banner .container,
+        .container,
+        .bg .container,
+        .match-card,
+        .history-card,
+        .team-column,
+        .nav-controls,
+        .footer {
+            max-width: 980px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        /* 针对某些可能固定宽度的元素，覆盖 */
+        .container,
+        .bg .container {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+
+        /* ===== 原有 PHP 页面样式（保留，但已强制宽度） ===== */
+        body { font-family: 'Segoe UI', 'PingFang SC', sans-serif; color: #2c3e50; }
+        h1 { text-align: center; font-weight: 300; margin-bottom: 20px; font-size: 1.8rem; }
+        .current-match { border-left-color: #e67e22; background: #fef9f0; margin-bottom: 30px; }
+        .current-title { text-align: center; font-size: 1.3rem; font-weight: 600; color: #d35400; margin-bottom: 10px; }
+        .nav-controls { display: flex; justify-content: center; gap: 15px; margin: 10px 0 20px 0; flex-wrap: wrap; }
+        .nav-btn { display: inline-block; padding: 8px 20px; background: #3498db; color: white; text-decoration: none; border-radius: 4px; border: none; cursor: pointer; transition: background 0.3s; font-size: 1rem; }
+        .nav-btn:hover { background: #2980b9; }
+        .nav-btn.disabled { background: #bdc3c7; cursor: not-allowed; pointer-events: none; }
+        .action-btn { display: inline-block; padding: 10px 30px; border-radius: 6px; text-decoration: none; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; }
+        .update-btn { background: #f39c12; color: #fff; }
+        .update-btn:hover { background: #e67e22; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(243, 156, 18, 0.4); }
+        .detail-btn { background: #27ae60; color: #fff; }
+        .detail-btn:hover { background: #229954; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4); }
+        .match-row { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-around; }
+        .team-column { flex: 1 1 40%; min-width: 280px; background: #fff; border-radius: 12px; padding: 16px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .team-column .team-header { font-size: 1.3rem; border-bottom: 2px solid #ecf0f1; padding-bottom: 6px; margin-bottom: 8px; }
+        .team-column .team-meta { color: #7f8c8d; font-size: 0.9rem; margin-bottom: 10px; }
+        .team-column .team-stats { font-size: 0.95rem; line-height: 1.8; background: #f8f9fa; border-radius: 8px; padding: 10px 14px; }
+        .match-card {  border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 20px 24px; margin-bottom: 24px;  }
+        .current-team { color: #2980b9; font-weight: 700; background: #eaf2f8; padding: 0 6px; border-radius: 4px; }
+        /* 历史主队红色，历史客队蓝色（仅当匹配今天主/客队时） */
+        .history-home { color: #e74c3c; font-weight: 700; }
+        .history-away { color: #2980b9; font-weight: 700; }
+        .match-info { margin-top: 12px; padding-top: 12px; border-top: 2px solid #ecf0f1; text-align: center; font-size: 1.05rem; color: #e67e22; }
+        .match-info strong { color: #d35400; }
+        .history-columns { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px; }
+        .history-column { flex: 1 1 45%; min-width: 300px; }
+        .history-column h2 { text-align: center; font-weight: 400; color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; }
+        .history-card { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 16px 20px; margin-bottom: 20px; border-left: 4px solid #c7ddec; }
+        .history-placeholder { text-align: center; color: #7f8c8d; padding: 30px 0; }
+        .footer { text-align: center; margin-top: 30px; color: #999; font-size: 14px; border-top: 1px solid #e9ecf2; padding-top: 15px; }
+
+        /* ===== 以下为从原 HTML 提取的额外样式（保持原样） ===== */
+        .match-team-odds { display: flex; align-items: center; margin: 8px 0; padding: 5px 0; }
+        .match-team-odds .team-name { font-weight: bold; font-size: 14px; color: #333; margin-bottom: 3px; }
+        .match-team-odds .odds-value { font-size: 13px !important; font-weight: bold !important; color: #333333 !important; text-align: center !important; display: block !important; padding: 2px 4px !important; border-radius: 2px !important; min-width: 40px !important; margin: 0 auto; }
+        .match-team-odds .odds-value:hover { background-color: #e9ecef !important; border-color: #007bff !important; }
+        .match-team-odds .odds-value.win { color: #8b8686 !important; }
+        .match-team-odds .odds-value.draw { color: #8b8686 !important; }
+        .match-team-odds .odds-value.lose { color: #8b8686 !important; }
+        .match-team-odds .vs-column { flex: 0.5; text-align: center; }
+        .match-team-odds .vs-text { font-weight: bold; font-size: 14px; color: #666; margin-bottom: 3px; }
+        .odds-labels-compact { display: flex; justify-content: space-between; margin: 5px 0; }
+        .odds-labels-compact .odds-label { font-size: 11px !important; color: #666 !important; text-align: center !important; display: block !important; flex: 1; }
+        .odds-labels-compact .vs-label { flex: 0.5; text-align: center; font-size: 11px !important; color: #666 !important; }
+        .h2h { position: relative; }
+        .single-tag { position: absolute; top: 48px; left: 0; background-color: #ff0000; color: #ffffff; font-size: 12px; padding: 2px 6px; border-radius: 2px; font-weight: bold; z-index: 10; display: inline-block; text-align: center; }
+        .h2h .compare { position: relative; z-index: 1; }
+        div.bg.blur{ filter: blur(5px); }
+        .animated-gift{ margin: 15px 10px; float: left; display: inline-block; padding-right: 25px; position: relative; overflow: hidden; }
+        .animated-gift .amount{ position: absolute; width: 25px; height: 25px; right: 0; bottom: 0; cursor: pointer; outline: none; }
+        .animated-gift .amount span{ position: absolute; font-size: 10px; width: 27px; height: 25px; line-height: 25px; text-align: center; color: #fff; display: block; -webkit-transition: all 0.1s; transition: all 0.1s; background-color: rgba(6,3,17,0.3) !important; }
+        .animated-gift:hover .amount span{ background-color: rgba(6,3,17,0.5) !important; }
+        .animated-gift .amount:after { content: " "; position: absolute; width: 6px; height: 6px; background-color: var(--header-bg); left: -3px; bottom: -3px; border-radius: 50%; }
+        .animated-gift .amount:before{ content: " "; position: absolute; width: 6px; height: 6px; background-color: var(--header-bg); left: -3px; top: -3px; border-radius: 50%; }
+        .animated-gift .border { position: relative; width: 50px; height: 19px; padding: 3px 5px; font-size: 11px; font-weight: 400; text-align: center; cursor: pointer; }
+        .animated-gift.bonus .border:before{ border: 0px; }
+        .animated-gift.bonus{ padding-right: 0px; }
+        .animated-gift .word1, .animated-gift .word2 { position: absolute; top: 0; left: 0; opacity: 0; width: 100%; height: 100%; line-height: 25px; text-align: center; animation-duration: 2s; animation-timing-function: ease-in-out; animation-iteration-count: 1; color: rgba(219,0,55, 1.0); text-transform: uppercase; }
+        .animated-gift .word2{ opacity: 1; }
+        .animated-gift .border:before { content: " "; position: absolute; left: 0; right: 0; top: 0; bottom: 0; background-color: rgba(6,3,17,0.3); border-right: 1px dashed var(--block-bg); animation-name: rotate; animation-duration: 4s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; -webkit-transition: all 0.1s; transition: all 0.1s; }
+        .animated-gift:hover .border:before { background-color: rgba(6,3,17,0.5) !important; animation-play-state: paused; }
+        .animated-gift .word1 { animation-name: fadeInWord1; }
+        .animated-gift .word2 { animation-name: fadeInWord2; }
+        @keyframes fadeInWord1 { 0% { opacity: 1; top: 0; } 50% { opacity: 0; top: -25px; } 100% { opacity: 0; top: -25px; } }
+        @keyframes fadeInWord2 { 0% { opacity: 0; top: 25px; } 50% { opacity: 1; top: 0px; } 100% { opacity: 1; top: 0px; } }
+        @keyframes rotate { 0% { background-color: rgba(6,3,17, 0.5); } 25% { background-color: rgba(6,3,17, 0.4); } 50% { background-color: rgba(6,3,17, 0.8); } 75% { background-color: rgba(6,3,17, 0.4); } 100% { background-color: rgba(6,3,17, 0.5); } }
+        .coupon-pop-up-bg { left: 0; top: 0; position: fixed; width: 100vw; height: 100vh; background: rgba(255,255,255,.5); z-index: 3; display: none; }
+        .coupon-pop-up-bg.active{ display: block; }
+        .coupon-pop-up{ position: fixed; width: 400px; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none; z-index: 3; }
+        .coupon-pop-up .content{ display: flex; overflow: hidden; flex-direction: column; }
+        .coupon-pop-up.active{ display: block; }
+        .coupon-pop-up .counter{ display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-top: 20px; }
+        .coupon-pop-up .counter .counter-title{ flex: 1 1 0px; font-size: 12px; }
+        .coupon-pop-up .counter .streak { flex: 1 1 0px; height: 7px; float: left; background-color: rgba(225, 225, 225, 1.00); position: relative; }
+        .coupon-pop-up .counter .streak .value { position: absolute; width: 0%; height: 7px; background-color: rgba(219,0,55, 1.0); }
+        .coupon-pop-up .counter .streak .count { position: absolute; width: 25px; height: 25px; line-height: 25px; text-align: center; top: -9.5px; background-color: rgba(219,0,55, 1.0); border-radius: 5px; font-size: 0.9em; }
+        .coupon-pop-up .pop-up-buttons{ background-color: #111111; display: flex; justify-content: flex-end; padding: 10px; border-top: 1px solid rgba(245,255,255,0.5); }
+        .coupon-pop-up .pop-up-buttons .button{ display: inline-block; text-decoration: underline; font-size: 11px; cursor: pointer; }
+        .coupon-pop-up .annotation { font-size: 12px; line-height: 20px; margin: 20px 0px; }
+        .coupon-pop-up .title { text-transform: uppercase; color: rgba(219,0,55, 1.0); }
+        .coupon-pop-up .bookmaker-logo{ width: 140px; height: 40px; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto; }
+        .coupon-pop-up .promo-container { text-align: center; background-color: rgba(227,242,253,1); background-image: url(http://www.HH520.COM/static/svg/cut.svg); background-repeat: no-repeat; background-position: center right 10px; background-size: 25px; border-radius: 5px; margin-top: 20px; position: relative; width: 100%; }
+        .coupon-pop-up .promo-container .promocode { display: block; overflow: hidden; }
+        .coupon-pop-up .promo-container .promocode .code { display: inline-block; line-height: 53px !important; height: 53px; font-size: 24px; -webkit-appearance: none; text-transform: uppercase; font-weight: 700; text-align: center; border: 0px; width: calc(100% - 120px); background-color: transparent; color: rgba(6,3,17, 1.00); }
+        .coupon-pop-up .content .bottom{ padding: 20px; display: flex; flex-direction: column; justify-content: space-between; background-color: rgba(6,3,17, 1.00); border-top-left-radius: 25px; border-top-right-radius: 25px; z-index: 2; }
+        .coupon-pop-up .border-top, .coupon-pop-up .border-bottom, .coupon-pop-up .border-center{ width: 100%; height: 0px; }
+        .coupon-pop-up .border-top{ margin-bottom: -9px; border-top: 13px dashed rgba(6,3,17, 1.00); }
+        .coupon-pop-up .border-bottom{ margin-top: -9px; border-bottom: 13px dashed #111111; }
+        .coupon-pop-up .border-center{ margin-top: -6px; margin-bottom: -6px; border-bottom: 13px dashed var(--block-bg); z-index: 1 !important; width: calc(100% - 40px); margin-left: 20px; background-color: rgba(6,3,17, 1.00); }
+        .coupon-pop-up .content .bottom .part{ display: flex; flex-direction: column; justify-content: center; min-height: calc(100% - 160px); }
+        .coupon-pop-up .content .bottom .button{ display: inline-block; border-radius: 5px; line-height: 20px; padding: 10px 20px; background-color: var(--bet-bg); color: var(--color-white); z-index: 2; text-align: center; cursor: pointer; }
+        .coupon-pop-up .top{ position: relative; display: flex; justify-content: space-between; align-items: center; height: 45px; line-height: 45px; padding: 20px; background-color: rgba(6,3,17, 1.00); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px; font-size: 32px; font-weight: bold; margin-bottom: 3px; z-index: 2 !important; }
+        .coupon-pop-up .top img{ position: absolute; width: 60px; height: 60px; right: 20px; bottom: 20px; }
+        .week-day { font-size: 12px; color: #666; margin-left: 2px; }
+        .games-selector { display: flex; gap: 5px; }
+        .game-link { text-decoration: none !important; color: inherit !important; display: block; outline: none; }
+        .website-content { display: flex; flex-wrap: wrap; gap: 24px; margin: 30px 0; box-sizing: border-box; }
+        .website-content * { box-sizing: inherit; }
+        .left-section { flex: 1 1 300px; min-width: 260px; }
+        .right-section { flex: 2 1 500px; min-width: 300px; }
+        .info-card { background: #ffffff; border-radius: 16px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); padding: 22px 20px; margin-bottom: 20px; border: 1px solid #f0f0f0; transition: box-shadow 0.2s ease; }
+        .info-card:hover { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); }
+        .info-card h3 { margin: 0 0 16px 0; font-size: 18px; font-weight: 600; color: #1e293b; border-left: 5px solid #db0037; padding-left: 14px; line-height: 1.3; }
+        .info-card ul { list-style: none; padding: 0; margin: 0; }
+        .info-card li { position: relative; padding: 8px 0 8px 24px; font-size: 15px; color: #334155; border-bottom: 1px dashed #edf2f7; line-height: 1.5; }
+        .info-card li:last-child { border-bottom: none; }
+        .info-card li:before { content: "●"; position: absolute; left: 4px; top: 8px; color: #db0037; font-size: 14px; opacity: 0.8; }
+        .info-card li:last-child:before { color: #64748b; }
+        .image-container { margin: 15px 0 10px; background: #f1f5f9; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-height: 160px; border: 1px dashed #cbd5e1; overflow: hidden; }
+        .image-container img { max-width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; }
+        .features { margin-top: 15px; font-size: 14px; color: #475569; background: #f8fafc; padding: 12px 16px; border-radius: 10px; border-left: 3px solid #db0037; }
+        .feature { display: block; line-height: 1.6; }
+
+        /* 手机端媒体查询全部禁用（因视口固定为980，不会触发） */
+        @media (max-width: 600px) { /* 不会生效 */ }
+        @media (max-width: 767px) { /* 不会生效 */ }
+        @media (min-width: 320px) and (max-width: 767px) { /* 不会生效 */ }
+        @media (max-width: 768px) { /* 不会生效 */ }
+        @media (max-width: 480px) { /* 不会生效 */ }
+    </style>
+</head>
+<body>
+
+<!-- ==================== 网站顶部 Header ==================== -->
+<header>
+    <div class="container">
+        <div class="sidebar-button"></div>
+        <div class="coupon-pop-up-bg"></div>
+
+        <div class="animated-gift bonus">
+            <!-- 动态礼物占位 -->
+        </div>
+
+        <div class="logo">
+            <a href="https://www.hh520.com/">hh520<span>.com</span></a>
+            <section class="page-loader" style="display: none;">
+                <div class="loader">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                        <rect x="0" y="13" width="4" height="5" fill="rgba(240,255,255,1.00)">
+                            <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+                            <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0s" dur="0.6s" repeatCount="indefinite"></animate>
+                        </rect>
+                        <rect x="10" y="13" width="4" height="5" fill="rgba(240,255,255,1.00)">
+                            <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+                            <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0.15s" dur="0.6s" repeatCount="indefinite"></animate>
+                        </rect>
+                        <rect x="20" y="13" width="4" height="5" fill="rgba(240,255,255,1.00)">
+                            <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+                            <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0.3s" dur="0.6s" repeatCount="indefinite"></animate>
+                        </rect>
+                    </svg>
+                </div>
+            </section>
+        </div>
+
+        <div id="games-navigation" class="games">
+            <div class="toggle"><span class="football">足球 - 竞彩</span></div>
+            <nav class="toggle-content">
+                <!-- 菜单内容 -->
+            </nav>
+        </div>
+
+        <nav class="sections football">
+            <a href="https://WWW.HH520.COM/" class="teams active">比赛</a>
+            <a href="https://www.hh520.com/tx/guanyu/" target="_blank" class="matches">关于</a>
+        </nav>
+
+        <nav class="user">
+            <!-- 用户登录 -->
+        </nav>
+    </div>
+</header>
+
+<!-- ==================== Banner 广告 ==================== -->
+<div class="banner bookmakers-top header ggbet">
+    <div class="banner-bg" style="background-color: rgba(28,28, 28, 0.7); border-color: rgba(28,28, 28, 1.00)">
+        <div class="container">
+            <span class="banner-link outbound-bet" gtag-category="bet" gtag-action="header" gtag-label=""></span>
+            <div class="bookmaker-logo" style="background-image: url()"></div>
+            <div class="bet-promo ">
+                <div class="promo-container">
+                    <div class="promocode">
+                        <input class="code" value="hh520.Com">
+                        <span gtag-category="bonus" gtag-action="header" gtag-label="ggbet" class="copycode" data-respond="Code was copied"></span>
+                    </div>
+                </div>
+                <span class="button outbound-bet" gtag-category="bet" gtag-action="header" gtag-label="ggbet" data-r="">专注比赛结果的预测</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 主体内容 ==================== -->
+<section id="body" class="bg">
+    <div class="bg">
+        <div class="container">
+            <div class="breadcrumbs" itemscope="" itemtype="">
+                <span class="item pre-last homepage" itemprop="itemListElement" itemscope="" itemtype="">
+                    <a href="https://WWW.HH520.COM/" itemprop="item"><span itemprop="name" class="element">HH520.COM</span></a>
+                    <meta itemprop="position" content="1">
+                </span>
+                <span class="separator">/</span>
+                <span class="item" itemprop="itemListElement" itemscope="" itemtype="">
+                    <a href="https://WWW.HH520.COM/" itemprop="item"><span itemprop="name" class="element">足球 - 竞彩</span></a>
+                    <meta itemprop="position" content="2">
+                </span>
+                <span class="separator">/</span>
+                <span class="item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                    <a href="https://www.hh520.com/?date=20260902" itemprop="item">
+                        <span itemprop="name" class="element">2026-09-02</span>
+                    </a>
+                    <meta itemprop="position" content="3">
+                </span>
+                <span class="separator">/</span>
+                <span class="item" itemprop="itemListElement" itemscope="" itemtype="">
+                    <a href="https://www.hh520.com/xi.php?id=6101" itemprop="item">
+                        <span itemprop="name" class="element">乌迪内斯 VS 威尼斯</span>
+                    </a>
+                    <meta itemprop="position" content="4">
+                </span>
+                <span class="separator">/</span>
+                <span class="item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+                    <span itemprop="name" class="element active">球队首发身价评分数据</span>
+                    <meta itemprop="position" content="5">
+                </span>
+            </div>            
+         
+            <!-- ===== 页面主要内容 ===== -->
+            <div class="container">
+                <div class="match-card current-match">    <h1>球队首发身价评分数据</h1><br><div class="current-title">日期：2026-09-02  场次：6 ｜ 比分：?</div></br><div class="nav-controls"><a href="?code=20260901006" class="nav-btn">← 上一天</a><a href="?code=20260903006" class="nav-btn">下一天 →</a><a href="?code=20260902005" class="nav-btn">← 上一场</a><a href="?code=20260902007" class="nav-btn">下一场 →</a></div><div class="match-row"><div class="team-column" style="flex:1; text-align:center; padding:20px; color:#e67e22; background:#fff; border-radius:12px; min-width:200px;"><strong>乌迪内斯</strong><br><span style="font-size:0.9rem;color:#7f8c8d;">阵容暂未更新，请稍后查看</span></div><div class="team-column" style="flex:1; text-align:center; padding:20px; color:#e67e22; background:#fff; border-radius:12px; min-width:200px;"><strong>威尼斯</strong><br><span style="font-size:0.9rem;color:#7f8c8d;">阵容暂未更新，请稍后查看</span></div></div><div style="text-align:center; margin:15px 0;"><a href="https://www.hh520.com/tx/gengxinsf.php" target="_blank" class="action-btn update-btn">🔄 更新首发</a></div></div>                <div class="history-columns">
+                    <div class="history-column">
+                        <h2>🏠 乌迪内斯 历史比赛</h2>
+                        <div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name">蒙扎</strong></div><div class="team-meta">教练：伊万·尤里奇 ｜ 阵型：3-4-2-1</div><div class="team-stats">首发合计：<strong>身价 2,705.00</strong>，<strong>评分 68.98</strong><br>替补合计：<strong>身价 3,270.00</strong>，<strong>评分 32.08</strong><br>全队合计：<strong>身价 5,975.00</strong>，<strong>评分 101.06</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name history-home">乌迪内斯</strong></div><div class="team-meta">教练：科斯塔·鲁尼奇 ｜ 阵型：3-4-2-1</div><div class="team-stats">首发合计：<strong>身价 7,830.00</strong>，<strong>评分 73.37</strong><br>替补合计：<strong>身价 4,447.50</strong>，<strong>评分 30.45</strong><br>全队合计：<strong>身价 12,277.50</strong>，<strong>评分 103.82</strong></div></div></div><div class="match-info"><strong>比赛日期：26-08-30 ｜ 比分：2:3 ｜ 结果：胜</strong></div></div><div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name history-home">乌迪内斯</strong></div><div class="team-meta">教练：科斯塔·鲁尼奇 ｜ 阵型：3-4-2-1</div><div class="team-stats">首发合计：<strong>身价 9,000.00</strong>，<strong>评分 74.78</strong><br>替补合计：<strong>身价 4,627.50</strong>，<strong>评分 32.51</strong><br>全队合计：<strong>身价 13,627.50</strong>，<strong>评分 107.29</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name">科莫</strong></div><div class="team-meta">教练：塞斯克·法布雷加斯 ｜ 阵型：4-2-3-1</div><div class="team-stats">首发合计：<strong>身价 32,550.00</strong>，<strong>评分 73.78</strong><br>替补合计：<strong>身价 12,145.00</strong>，<strong>评分 33.04</strong><br>全队合计：<strong>身价 44,695.00</strong>，<strong>评分 106.82</strong></div></div></div><div class="match-info"><strong>比赛日期：26-08-23 ｜ 比分：1:1 ｜ 结果：平</strong></div></div><div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name history-home">乌迪内斯</strong></div><div class="team-meta">教练：科斯塔·鲁尼奇 ｜ 阵型：3-4-2-1</div><div class="team-stats">首发合计：<strong>身价 9,200.00</strong>，<strong>评分 77.88</strong><br>替补合计：<strong>身价 5,392.50</strong>，<strong>评分 33.42</strong><br>全队合计：<strong>身价 14,592.50</strong>，<strong>评分 111.30</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name">帕多瓦</strong></div><div class="team-meta">教练：尼古拉·安东尼奥·卡拉布罗 ｜ 阵型：3-5-2</div><div class="team-stats">首发合计：<strong>身价 1,230.00</strong>，<strong>评分 71.40</strong><br>替补合计：<strong>身价 900.00</strong>，<strong>评分 32.12</strong><br>全队合计：<strong>身价 2,130.00</strong>，<strong>评分 103.52</strong></div></div></div><div class="match-info"><strong>比赛日期：26-08-16 ｜ 比分：1:0 ｜ 结果：胜</strong></div></div><div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name history-home">乌迪内斯</strong></div><div class="team-meta">教练：科斯塔·鲁尼奇 ｜ 阵型：</div><div class="team-stats">首发合计：<strong>身价 7,640.00</strong>，<strong>评分 0.00</strong><br>替补合计：<strong>身价 7,262.50</strong>，<strong>评分 0.00</strong><br>全队合计：<strong>身价 14,902.50</strong>，<strong>评分 0.00</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name">诺丁汉森林</strong></div><div class="team-meta">教练：奥利弗·格拉斯纳 ｜ 阵型：</div><div class="team-stats">首发合计：<strong>身价 12,380.00</strong>，<strong>评分 0.00</strong><br>替补合计：<strong>身价 4,150.00</strong>，<strong>评分 0.00</strong><br>全队合计：<strong>身价 16,530.00</strong>，<strong>评分 0.00</strong></div></div></div><div class="match-info"><strong>比赛日期：26-08-09 ｜ 比分：1:0 ｜ 结果：胜</strong></div></div><div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name">特拉布宗</strong></div><div class="team-meta">教练：法蒂赫·特科 ｜ 阵型：4-4-2</div><div class="team-stats">首发合计：<strong>身价 8,540.00</strong>，<strong>评分 78.39</strong><br>替补合计：<strong>身价 2,150.00</strong>，<strong>评分 53.86</strong><br>全队合计：<strong>身价 10,690.00</strong>，<strong>评分 132.25</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name history-home">乌迪内斯</strong></div><div class="team-meta">教练：科斯塔·鲁尼奇 ｜ 阵型：3-4-2-1</div><div class="team-stats">首发合计：<strong>身价 7,352.50</strong>，<strong>评分 72.60</strong><br>替补合计：<strong>身价 7,550.00</strong>，<strong>评分 50.14</strong><br>全队合计：<strong>身价 14,902.50</strong>，<strong>评分 122.74</strong></div></div></div><div class="match-info"><strong>比赛日期：26-08-02 ｜ 比分：1:0 ｜ 结果：负</strong></div></div><div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name history-home">乌迪内斯</strong></div><div class="team-meta">教练：科斯塔·鲁尼奇 ｜ 阵型：3-4-2-1</div><div class="team-stats">首发合计：<strong>身价 6,040.00</strong>，<strong>评分 0.00</strong><br>替补合计：<strong>身价 9,012.50</strong>，<strong>评分 0.00</strong><br>全队合计：<strong>身价 15,052.50</strong>，<strong>评分 0.00</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name">美因茨</strong></div><div class="team-meta">教练：乌尔斯·费希尔 ｜ 阵型：3-4-1-2</div><div class="team-stats">首发合计：<strong>身价 10,355.00</strong>，<strong>评分 0.00</strong><br>替补合计：<strong>身价 5,505.00</strong>，<strong>评分 0.00</strong><br>全队合计：<strong>身价 15,860.00</strong>，<strong>评分 0.00</strong></div></div></div><div class="match-info"><strong>比赛日期：26-08-01 ｜ 比分：3:3 ｜ 结果：平</strong></div></div><div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name history-home">乌迪内斯</strong></div><div class="team-meta">教练：科斯塔·鲁尼奇 ｜ 阵型：4-2-3-1</div><div class="team-stats">首发合计：<strong>身价 8,065.00</strong>，<strong>评分 0.00</strong><br>替补合计：<strong>身价 6,587.50</strong>，<strong>评分 0.00</strong><br>全队合计：<strong>身价 14,652.50</strong>，<strong>评分 0.00</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name">迪拜青年国民</strong></div><div class="team-meta">教练：安德烈·苏亚雷斯·雅尔丁 ｜ 阵型：4-2-3-1</div><div class="team-stats">首发合计：<strong>身价 1,760.00</strong>，<strong>评分 0.00</strong><br>替补合计：<strong>身价 0.00</strong>，<strong>评分 0.00</strong><br>全队合计：<strong>身价 1,760.00</strong>，<strong>评分 0.00</strong></div></div></div><div class="match-info"><strong>比赛日期：26-07-28 ｜ 比分：1:2 ｜ 结果：负</strong></div></div>                    </div>
+                    <div class="history-column">
+                        <h2>✈️ 威尼斯 历史比赛</h2>
+                        <div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name">AC米兰</strong></div><div class="team-meta">教练：鲁本·阿莫林 ｜ 阵型：3-4-2-1</div><div class="team-stats">首发合计：<strong>身价 23,600.00</strong>，<strong>评分 78.07</strong><br>替补合计：<strong>身价 18,520.00</strong>，<strong>评分 35.95</strong><br>全队合计：<strong>身价 42,120.00</strong>，<strong>评分 114.02</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name history-away">威尼斯</strong></div><div class="team-meta">教练：乔瓦尼·斯特罗帕 ｜ 阵型：3-5-2</div><div class="team-stats">首发合计：<strong>身价 5,970.00</strong>，<strong>评分 70.13</strong><br>替补合计：<strong>身价 3,915.00</strong>，<strong>评分 31.26</strong><br>全队合计：<strong>身价 9,885.00</strong>，<strong>评分 101.39</strong></div></div></div><div class="match-info"><strong>比赛日期：26-08-29 ｜ 比分：2:0 ｜ 结果：负</strong></div></div><div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name history-away">威尼斯</strong></div><div class="team-meta">教练：乔瓦尼·斯特罗帕 ｜ 阵型：3-5-2</div><div class="team-stats">首发合计：<strong>身价 6,150.00</strong>，<strong>评分 71.25</strong><br>替补合计：<strong>身价 3,790.00</strong>，<strong>评分 25.98</strong><br>全队合计：<strong>身价 9,940.00</strong>，<strong>评分 97.23</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name">莱切</strong></div><div class="team-meta">教练：尤西比奧·迪·弗朗切斯科 ｜ 阵型：4-3-3</div><div class="team-stats">首发合计：<strong>身价 3,290.00</strong>，<strong>评分 76.55</strong><br>替补合计：<strong>身价 2,500.00</strong>，<strong>评分 35.26</strong><br>全队合计：<strong>身价 5,790.00</strong>，<strong>评分 111.81</strong></div></div></div><div class="match-info"><strong>比赛日期：26-08-24 ｜ 比分：0:2 ｜ 结果：负</strong></div></div><div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name history-away">威尼斯</strong></div><div class="team-meta">教练：乔瓦尼·斯特罗帕 ｜ 阵型：4-4-2</div><div class="team-stats">首发合计：<strong>身价 6,870.00</strong>，<strong>评分 77.76</strong><br>替补合计：<strong>身价 2,945.00</strong>，<strong>评分 30.64</strong><br>全队合计：<strong>身价 9,815.00</strong>，<strong>评分 108.40</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name">摩德纳</strong></div><div class="team-meta">教练：丹尼尔·加洛帕 ｜ 阵型：4-4-2</div><div class="team-stats">首发合计：<strong>身价 1,607.50</strong>，<strong>评分 73.53</strong><br>替补合计：<strong>身价 955.00</strong>，<strong>评分 25.23</strong><br>全队合计：<strong>身价 2,562.50</strong>，<strong>评分 98.76</strong></div></div></div><div class="match-info"><strong>比赛日期：26-08-16 ｜ 比分：3:2 ｜ 结果：胜</strong></div></div><div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name">布雷斯特</strong></div><div class="team-meta">教练：朱利安·拉许埃 ｜ 阵型：4-2-3-1</div><div class="team-stats">首发合计：<strong>身价 4,680.00</strong>，<strong>评分 0.00</strong><br>替补合计：<strong>身价 0.00</strong>，<strong>评分 0.00</strong><br>全队合计：<strong>身价 4,680.00</strong>，<strong>评分 0.00</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name history-away">威尼斯</strong></div><div class="team-meta">教练：乔瓦尼·斯特罗帕 ｜ 阵型：4-4-2</div><div class="team-stats">首发合计：<strong>身价 6,300.00</strong>，<strong>评分 0.00</strong><br>替补合计：<strong>身价 0.00</strong>，<strong>评分 0.00</strong><br>全队合计：<strong>身价 6,300.00</strong>，<strong>评分 0.00</strong></div></div></div><div class="match-info"><strong>比赛日期：26-08-09 ｜ 比分：2:2 ｜ 结果：平</strong></div></div><div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name">圣埃蒂安</strong></div><div class="team-meta">教练：伊恩·卡斯罗 ｜ 阵型：</div><div class="team-stats">首发合计：<strong>身价 3,620.00</strong>，<strong>评分 0.00</strong><br>替补合计：<strong>身价 1,505.00</strong>，<strong>评分 0.00</strong><br>全队合计：<strong>身价 5,125.00</strong>，<strong>评分 0.00</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name history-away">威尼斯</strong></div><div class="team-meta">教练：乔瓦尼·斯特罗帕 ｜ 阵型：</div><div class="team-stats">首发合计：<strong>身价 4,950.00</strong>，<strong>评分 0.00</strong><br>替补合计：<strong>身价 0.00</strong>，<strong>评分 0.00</strong><br>全队合计：<strong>身价 4,950.00</strong>，<strong>评分 0.00</strong></div></div></div><div class="match-info"><strong>比赛日期：26-08-01 ｜ 比分：4:3 ｜ 结果：负</strong></div></div><div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name">加拉塔萨雷</strong></div><div class="team-meta">教练：奥坎·布鲁克 ｜ 阵型：4-3-3</div><div class="team-stats">首发合计：<strong>身价 13,650.00</strong>，<strong>评分 71.90</strong><br>替补合计：<strong>身价 11,790.00</strong>，<strong>评分 58.00</strong><br>全队合计：<strong>身价 25,440.00</strong>，<strong>评分 129.90</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name history-away">威尼斯</strong></div><div class="team-meta">教练：乔瓦尼·斯特罗帕 ｜ 阵型：3-4-1-2</div><div class="team-stats">首发合计：<strong>身价 4,550.00</strong>，<strong>评分 78.00</strong><br>替补合计：<strong>身价 1,855.00</strong>，<strong>评分 84.69</strong><br>全队合计：<strong>身价 6,405.00</strong>，<strong>评分 162.69</strong></div></div></div><div class="match-info"><strong>比赛日期：26-07-28 ｜ 比分：0:3 ｜ 结果：胜</strong></div></div><div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name history-away">威尼斯</strong></div><div class="team-meta">教练：乔瓦尼·斯特罗帕 ｜ 阵型：3-5-2</div><div class="team-stats">首发合计：<strong>身价 6,070.00</strong>，<strong>评分 79.64</strong><br>替补合计：<strong>身价 1,285.00</strong>，<strong>评分 34.64</strong><br>全队合计：<strong>身价 7,355.00</strong>，<strong>评分 114.28</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name">巴勒莫</strong></div><div class="team-meta">教练：菲利波·因扎吉 ｜ 阵型：3-4-2-1</div><div class="team-stats">首发合计：<strong>身价 1,875.00</strong>，<strong>评分 69.48</strong><br>替补合计：<strong>身价 1,730.00</strong>，<strong>评分 31.51</strong><br>全队合计：<strong>身价 3,605.00</strong>，<strong>评分 100.99</strong></div></div></div><div class="match-info"><strong>比赛日期：26-05-09 ｜ 比分：2:0 ｜ 结果：胜</strong></div></div><div class="history-card"><div class="match-row"><div class="team-column"><div class="team-header"><span class="icon">🏠</span> <strong class="team-name">斯佩齐亚</strong></div><div class="team-meta">教练：卢卡·德安杰洛 ｜ 阵型：3-5-2</div><div class="team-stats">首发合计：<strong>身价 885.00</strong>，<strong>评分 68.75</strong><br>替补合计：<strong>身价 1,520.00</strong>，<strong>评分 32.77</strong><br>全队合计：<strong>身价 2,405.00</strong>，<strong>评分 101.52</strong></div></div><div class="team-column"><div class="team-header"><span class="icon">✈️</span> <strong class="team-name history-away">威尼斯</strong></div><div class="team-meta">教练：乔瓦尼·斯特罗帕 ｜ 阵型：3-5-2</div><div class="team-stats">首发合计：<strong>身价 6,270.00</strong>，<strong>评分 75.28</strong><br>替补合计：<strong>身价 1,475.00</strong>，<strong>评分 25.31</strong><br>全队合计：<strong>身价 7,745.00</strong>，<strong>评分 100.59</strong></div></div></div><div class="match-info"><strong>比赛日期：26-05-01 ｜ 比分：2:2 ｜ 结果：平</strong></div></div>                    </div>
+                </div>
+                <div class="footer">
+                    声明：本网资讯仅供体育爱好者进行比赛浏览观看研究之用，任何人不得用于非法用途，否则责任自负。所有内容不得违反国家法律规定，如有违者本网有权随时予以删除，并保留与有关部门合作追究的权利。
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== JavaScript ===== -->
+<script>
+    $('.animated-gift').click(function(){
+        $('.coupon-pop-up').toggleClass('active');
+        $('.coupon-pop-up-bg').toggleClass('active');
+        $('div.bg').toggleClass('blur');
+    });
+</script>
+
+</body>
+</html>
