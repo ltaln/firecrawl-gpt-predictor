@@ -11,7 +11,6 @@ from pathlib import Path
 from urllib.parse import parse_qs, urljoin, urlparse, urlunparse
 
 import requests
-from openai import OpenAI
 
 FIRECRAWL_ENDPOINT = "https://api.firecrawl.dev/v2/scrape"
 BASE_URL = "https://www.hh520.com/"
@@ -122,8 +121,8 @@ def discover(html,base,date):
     return out
 
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("--date",required=True); ap.add_argument("--urls",nargs="*"); ap.add_argument("--scrape-only",action="store_true"); ap.add_argument("--skip-source-validation",action="store_true"); ap.add_argument("--max-pages",type=int,default=500); a=ap.parse_args()
-    key=os.environ.get("FIRECRAWL_API_KEY"); openai_key=os.environ.get("OPENAI_API_KEY"); model=os.environ.get("OPENAI_MODEL","gpt-5.6-sol")
+    ap=argparse.ArgumentParser(); ap.add_argument("--date",required=True); ap.add_argument("--urls",nargs="*"); ap.add_argument("--skip-source-validation",action="store_true"); ap.add_argument("--max-pages",type=int,default=500); a=ap.parse_args()
+    key=os.environ.get("FIRECRAWL_API_KEY")
     if not key: raise SystemExit("Missing FIRECRAWL_API_KEY")
     started=datetime.now(timezone.utc); sid=started.strftime("%Y%m%dT%H%M%SZ"); raw=Path("data/raw")/a.date/"snapshots"/sid; src=raw/"source"; raw.mkdir(parents=True,exist_ok=True); src.mkdir(parents=True,exist_ok=True)
     queue=deque(); queued=set()
@@ -152,10 +151,8 @@ def main():
     validation={"date":a.date,"snapshot_id":sid,"validated_urls":len(vals),"passed":sum(x.get("result")=="PASS" for x in vals),"checked":sum(x.get("result")=="CHECK" for x in vals),"results":vals}
     discovery={"date":a.date,"snapshot_id":sid,"processed_pages":len(docs),"failed_pages":len(failures),"category_counts":counts,"discovered":discoveries,"failures":failures,"truncated":bool(queue)}
     (raw/"source_validation.json").write_text(json.dumps(validation,ensure_ascii=False,indent=2),encoding="utf-8"); (raw/"url_discovery.json").write_text(json.dumps(discovery,ensure_ascii=False,indent=2),encoding="utf-8")
-    manifest={"date":a.date,"snapshot_id":sid,"started_at":started.isoformat(),"scraped_pages":len(docs),"failed_pages":len(failures),"category_counts":counts,"source_validation":str(raw/"source_validation.json"),"url_discovery":str(raw/"url_discovery.json"),"mode":"scrape-only" if a.scrape_only or not openai_key else "scrape-and-predict"}
+    manifest={"date":a.date,"snapshot_id":sid,"started_at":started.isoformat(),"scraped_pages":len(docs),"failed_pages":len(failures),"category_counts":counts,"source_validation":str(raw/"source_validation.json"),"url_discovery":str(raw/"url_discovery.json"),"mode":"data-only"}
     (raw/"manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding="utf-8"); latest=Path("data/raw")/a.date/"latest.json"; latest.write_text(json.dumps({"date":a.date,"snapshot_id":sid,"snapshot_dir":str(raw),"manifest":str(raw/"manifest.json"),"source_validation":str(raw/"source_validation.json"),"url_discovery":str(raw/"url_discovery.json")},ensure_ascii=False,indent=2),encoding="utf-8")
     print(json.dumps({"validation":validation,"discovery":discovery},ensure_ascii=False,indent=2))
-    if a.scrape_only or not openai_key: return
-    client=OpenAI(api_key=openai_key); compact=[{"url":x["url"],"category":x["category"],"markdown":x["response"].get("data",{}).get("markdown","")} for x in docs]; resp=client.responses.create(model=model,input=f"请只依据以下抓取数据分析 {a.date} 的足球比赛，不要补充未抓取信息。\n{json.dumps(compact,ensure_ascii=False)}"); Path("data/predictions").mkdir(parents=True,exist_ok=True); (Path("data/predictions")/f"{a.date}-{sid}.md").write_text(resp.output_text,encoding="utf-8")
 
 if __name__=="__main__": main()
