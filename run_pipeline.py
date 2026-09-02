@@ -2,7 +2,7 @@ import argparse
 import json
 import os
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -51,18 +51,24 @@ def load_urls(cli_urls: list[str] | None) -> list[str]:
     if cli_urls:
         return cli_urls
     path = Path("urls.txt")
-    return [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip() and not line.startswith("#")]
+    return [
+        line.strip()
+        for line in path.read_text(encoding="utf-8").splitlines()
+        if line.strip() and not line.startswith("#")
+    ]
 
 
 def build_prompt(target_date: str, scraped_docs: list[dict]) -> str:
     compact = []
     for item in scraped_docs:
         data = item.get("response", {}).get("data", {})
-        compact.append({
-            "url": item["url"],
-            "metadata": data.get("metadata", {}),
-            "markdown": data.get("markdown", ""),
-        })
+        compact.append(
+            {
+                "url": item["url"],
+                "metadata": data.get("metadata", {}),
+                "markdown": data.get("markdown", ""),
+            }
+        )
 
     return f"""你是一名谨慎的足球赛前数据分析助手。请只依据下面抓取到的网页数据分析 {target_date} 的比赛。
 
@@ -83,15 +89,15 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", required=True)
     parser.add_argument("--urls", nargs="*")
+    parser.add_argument("--scrape-only", action="store_true")
     args = parser.parse_args()
 
     firecrawl_key = os.environ.get("FIRECRAWL_API_KEY")
     openai_key = os.environ.get("OPENAI_API_KEY")
     model = os.environ.get("OPENAI_MODEL", "gpt-5.6-sol")
+
     if not firecrawl_key:
         raise SystemExit("Missing FIRECRAWL_API_KEY")
-    if not openai_key:
-        raise SystemExit("Missing OPENAI_API_KEY")
 
     urls = load_urls(args.urls)
     raw_dir = Path("data/raw") / args.date
@@ -101,10 +107,33 @@ def main() -> None:
 
     scraped_docs = []
     for url in urls:
+        print(f"Scraping: {url}")
         response = scrape_url(url, firecrawl_key)
-        record = {"url": url, "fetched_at": datetime.utcnow().isoformat() + "Z", "response": response}
+        record = {
+            "url": url,
+            "fetched_at": datetime.now(timezone.utc).isoformat(),
+            "response": response,
+        }
         scraped_docs.append(record)
-        (raw_dir / f"{slugify(url)}.json").write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
+        out = raw_dir / f"{slugify(url)}.json"
+        out.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"Saved: {out}")
+
+    scrape_manifest = {
+        "date": args.date,
+        "urls": urls,
+        "scraped_pages": len(scraped_docs),
+        "mode": "scrape-only" if args.scrape_only or not openai_key else "scrape-and-predict",
+        "files": [str(raw_dir / f"{slugify(u)}.json") for u in urls],
+    }
+    manifest_path = raw_dir / "manifest.json"
+    manifest_path.write_text(json.dumps(scrape_manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    if args.scrape_only or not openai_key:
+        print(f"Firecrawl complete: {len(scraped_docs)} pages saved under {raw_dir}")
+        if not openai_key and not args.scrape_only:
+            print("OPENAI_API_KEY not set; prediction stage skipped.")
+        return
 
     client = OpenAI(api_key=openai_key)
     response = client.responses.create(
@@ -115,13 +144,16 @@ def main() -> None:
     out_path = pred_dir / f"{args.date}.md"
     out_path.write_text(text, encoding="utf-8")
 
-    manifest = {
+    prediction_manifest = {
         "date": args.date,
         "model": model,
         "urls": urls,
         "prediction_file": str(out_path),
     }
-    (pred_dir / f"{args.date}.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+    (pred_dir / f"{args.date}.json").write_text(
+        json.dumps(prediction_manifest, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
     print(text)
 
 
