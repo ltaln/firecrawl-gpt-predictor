@@ -1,0 +1,60 @@
+{
+  "date": "2026-09-01",
+  "snapshot_id": "20260902T014439Z",
+  "validated_urls": 4,
+  "passed": 4,
+  "results": [
+    {
+      "url": "https://www.hh520.com/",
+      "source_status_code": 200,
+      "source_final_url": "https://www.hh520.com/",
+      "source_html_chars": 84767,
+      "firecrawl_raw_html_chars": 76924,
+      "source_visible_text_chars": 1133,
+      "firecrawl_visible_text_chars": 1131,
+      "normalized_similarity": 0.999117,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/xi.php?id=6086",
+      "source_status_code": 200,
+      "source_final_url": "https://www.hh520.com/xi.php?id=6086",
+      "source_html_chars": 65952,
+      "firecrawl_raw_html_chars": 53561,
+      "source_visible_text_chars": 1264,
+      "firecrawl_visible_text_chars": 1262,
+      "normalized_similarity": 0.999208,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-01&changci=1",
+      "source_status_code": 200,
+      "source_final_url": "https://www.hh520.com/tx/10013.php?date=2026-09-01&changci=1",
+      "source_html_chars": 287433,
+      "firecrawl_raw_html_chars": 290530,
+      "source_visible_text_chars": 34670,
+      "firecrawl_visible_text_chars": 34641,
+      "normalized_similarity": 0.999582,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260901001",
+      "source_status_code": 200,
+      "source_final_url": "https://www.hh520.com/tx/10016.php?code=20260901001",
+      "source_html_chars": 87636,
+      "firecrawl_raw_html_chars": 86751,
+      "source_visible_text_chars": 20219,
+      "firecrawl_visible_text_chars": 20219,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    }
+  ]
+}

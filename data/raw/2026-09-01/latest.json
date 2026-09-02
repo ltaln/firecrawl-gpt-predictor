@@ -1,6 +1,7 @@
 {
   "date": "2026-09-01",
-  "snapshot_id": "20260902T013741Z",
-  "snapshot_dir": "data/raw/2026-09-01/snapshots/20260902T013741Z",
-  "manifest": "data/raw/2026-09-01/snapshots/20260902T013741Z/manifest.json"
+  "snapshot_id": "20260902T014439Z",
+  "snapshot_dir": "data/raw/2026-09-01/snapshots/20260902T014439Z",
+  "manifest": "data/raw/2026-09-01/snapshots/20260902T014439Z/manifest.json",
+  "source_validation": "data/raw/2026-09-01/snapshots/20260902T014439Z/source_validation.json"
 }

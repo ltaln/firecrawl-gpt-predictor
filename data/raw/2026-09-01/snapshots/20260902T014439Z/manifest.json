@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-01",
+  "snapshot_id": "20260902T014439Z",
+  "started_at": "2026-09-02T01:44:39.843289+00:00",
+  "urls": [
+    "https://www.hh520.com/",
+    "https://www.hh520.com/xi.php?id=6086",
+    "https://www.hh520.com/tx/10013.php?date=2026-09-01&changci=1",
+    "https://www.hh520.com/tx/10016.php?code=20260901001"
+  ],
+  "scraped_pages": 4,
+  "source_validation": "data/raw/2026-09-01/snapshots/20260902T014439Z/source_validation.json",
+  "mode": "scrape-only",
+  "files": [
+    "data/raw/2026-09-01/snapshots/20260902T014439Z/www.hh520.com_.json",
+    "data/raw/2026-09-01/snapshots/20260902T014439Z/www.hh520.com_xi.php_id_6086.json",
+    "data/raw/2026-09-01/snapshots/20260902T014439Z/www.hh520.com_tx_10013.php_date_2026-09-01_changci_1.json",
+    "data/raw/2026-09-01/snapshots/20260902T014439Z/www.hh520.com_tx_10016.php_code_20260901001.json"
+  ]
+}
