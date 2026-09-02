@@ -20,6 +20,7 @@ on:
     branches: [main]
     paths:
       - "run_pipeline.py"
+      - "build_match_packages.py"
       - "urls.txt"
       - ".github/workflows/predict.yml"
 
@@ -64,6 +65,28 @@ jobs:
             python run_pipeline.py --date "$DATE" $EXTRA
           fi
 
+      - name: Build per-match GPT packages
+        run: |
+          DATE="${{ github.event.inputs.date || '2026-09-02' }}"
+          python build_match_packages.py --date "$DATE"
+
+      - name: Verify match packages
+        run: |
+          DATE="${{ github.event.inputs.date || '2026-09-02' }}"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          date=os.environ.get('DATE_VALUE','2026-09-02')
+          latest=Path('data/matches')/date/'latest.json'
+          obj=json.loads(latest.read_text(encoding='utf-8'))
+          idx=json.loads(Path(obj['index']).read_text(encoding='utf-8'))
+          print(json.dumps(idx, ensure_ascii=False, indent=2))
+          if idx['match_count'] != idx['complete_matches']:
+              raise SystemExit(f"Incomplete match packages: {idx['complete_matches']}/{idx['match_count']}")
+          PY
+        env:
+          DATE_VALUE: ${{ github.event.inputs.date || '2026-09-02' }}
+
       - name: Commit results
         run: |
           DATE="${{ github.event.inputs.date || '2026-09-02' }}"
@@ -73,7 +96,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes"
           else
-            git commit -m "Add scrape validation results for $DATE"
+            git commit -m "Add scrape validation and match packages for $DATE"
             for attempt in 1 2 3; do
               if git push; then
                 exit 0
