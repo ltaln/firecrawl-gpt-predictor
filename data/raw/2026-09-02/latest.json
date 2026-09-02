@@ -1,8 +1,8 @@
 {
   "date": "2026-09-02",
-  "snapshot_id": "20260902T023836Z",
-  "snapshot_dir": "data/raw/2026-09-02/snapshots/20260902T023836Z",
-  "manifest": "data/raw/2026-09-02/snapshots/20260902T023836Z/manifest.json",
-  "source_validation": "data/raw/2026-09-02/snapshots/20260902T023836Z/source_validation.json",
-  "url_discovery": "data/raw/2026-09-02/snapshots/20260902T023836Z/url_discovery.json"
+  "snapshot_id": "20260902T030752Z",
+  "snapshot_dir": "data/raw/2026-09-02/snapshots/20260902T030752Z",
+  "manifest": "data/raw/2026-09-02/snapshots/20260902T030752Z/manifest.json",
+  "source_validation": "data/raw/2026-09-02/snapshots/20260902T030752Z/source_validation.json",
+  "url_discovery": "data/raw/2026-09-02/snapshots/20260902T030752Z/url_discovery.json"
 }
