@@ -1,0 +1,99 @@
+{
+  "date": "2026-09-02",
+  "snapshot_id": "20260902T044738Z",
+  "match_count": 13,
+  "complete_matches": 13,
+  "matches": [
+    {
+      "match_no": 1,
+      "code": "20260902001",
+      "file": "match_001_20260902001.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 2,
+      "code": "20260902002",
+      "file": "match_002_20260902002.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 3,
+      "code": "20260902003",
+      "file": "match_003_20260902003.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 4,
+      "code": "20260902004",
+      "file": "match_004_20260902004.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 5,
+      "code": "20260902005",
+      "file": "match_005_20260902005.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 6,
+      "code": "20260902006",
+      "file": "match_006_20260902006.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 7,
+      "code": "20260902007",
+      "file": "match_007_20260902007.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 8,
+      "code": "20260902008",
+      "file": "match_008_20260902008.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 9,
+      "code": "20260902009",
+      "file": "match_009_20260902009.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 10,
+      "code": "20260902010",
+      "file": "match_010_20260902010.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 11,
+      "code": "20260902011",
+      "file": "match_011_20260902011.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 12,
+      "code": "20260902012",
+      "file": "match_012_20260902012.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 13,
+      "code": "20260902013",
+      "file": "match_013_20260902013.json",
+      "complete": true,
+      "section_count": 5
+    }
+  ]
+}
