@@ -1,0 +1,17 @@
+{
+  "date": "2026-09-01",
+  "urls": [
+    "https://www.hh520.com/",
+    "https://www.hh520.com/xi.php?id=6086",
+    "https://www.hh520.com/tx/10013.php?date=2026-09-01&changci=1",
+    "https://www.hh520.com/tx/10016.php"
+  ],
+  "scraped_pages": 4,
+  "mode": "scrape-only",
+  "files": [
+    "data/raw/2026-09-01/www.hh520.com_.json",
+    "data/raw/2026-09-01/www.hh520.com_xi.php_id_6086.json",
+    "data/raw/2026-09-01/www.hh520.com_tx_10013.php_date_2026-09-01_changci_1.json",
+    "data/raw/2026-09-01/www.hh520.com_tx_10016.php.json"
+  ]
+}

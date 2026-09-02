@@ -1,0 +1,25 @@
+{
+  "url": "https://www.hh520.com/tx/10016.php",
+  "fetched_at": "2026-09-02T01:24:58.006861+00:00",
+  "response": {
+    "success": true,
+    "data": {
+      "markdown": "错误: 无效的 code 参数，格式应为 YYYYMMDDCCC（如 20260816022）",
+      "rawHtml": "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head><body>错误: 无效的 code 参数，格式应为 YYYYMMDDCCC（如 20260816022）</body></html>",
+      "metadata": {
+        "scrapeId": "01a05fb8-1c03-7573-82e9-ee8bdf725275",
+        "sourceURL": "https://www.hh520.com/tx/10016.php",
+        "url": "https://www.hh520.com/tx/10016.php",
+        "statusCode": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "timezone": "America/New_York",
+        "proxyUsed": "basic",
+        "indexId": "8fe7d2b7-3e5e-48bb-ac3f-464f667de936",
+        "creditsUsed": 1,
+        "concurrencyLimited": false
+      },
+      "warning": "The engine used does not support the following features: disableAdblock -- your scrape may be partial.",
+      "html": "<html><body>错误: 无效的 code 参数，格式应为 YYYYMMDDCCC（如 20260816022）</body></html>"
+    }
+  }
+}
