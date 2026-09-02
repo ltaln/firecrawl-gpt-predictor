@@ -1,3 +1,29 @@
 # Firecrawl GPT Predictor
 
-Repository initialized by ChatGPT for an automated Firecrawl + GPT sports prediction workflow.
+自动抓取指定网页，保留尽可能完整的页面内容，并交给 GPT 做结构化分析/预测。
+
+## 工作流
+
+1. Firecrawl v2 抓取 URL，同时保存 `markdown`、`html`、`rawHtml`。
+2. 将抓取结果保存到 `data/raw/`。
+3. 使用 OpenAI Responses API 对抓取内容进行分析。
+4. 输出结果到 `data/predictions/`。
+5. GitHub Actions 支持手动运行，并可将结果自动提交回仓库。
+
+## 必需的 GitHub Secrets
+
+- `FIRECRAWL_API_KEY`
+- `OPENAI_API_KEY`
+
+可选变量：`OPENAI_MODEL`，默认 `gpt-5.6-sol`。
+
+## 本地运行
+
+```bash
+pip install -r requirements.txt
+export FIRECRAWL_API_KEY=...
+export OPENAI_API_KEY=...
+python run_pipeline.py --date 2026-09-01
+```
+
+默认 URL 在 `urls.txt`。也可以通过 `--urls` 临时传入多个地址。
