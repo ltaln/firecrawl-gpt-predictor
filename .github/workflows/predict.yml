@@ -1,4 +1,4 @@
-name: Firecrawl GPT Prediction
+name: Firecrawl Scrape / GPT Prediction
 
 on:
   workflow_dispatch:
@@ -11,12 +11,17 @@ on:
         description: "可选：空格分隔 URL；留空使用 urls.txt"
         required: false
         default: ""
+      scrape_only:
+        description: "仅抓取，不调用 OpenAI"
+        required: true
+        type: boolean
+        default: true
 
 permissions:
   contents: write
 
 jobs:
-  predict:
+  run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,21 +35,27 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run pipeline with default URLs
+      - name: Run with default URLs
         if: ${{ inputs.urls == '' }}
         env:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.6-sol' }}
-        run: python run_pipeline.py --date "${{ inputs.date }}"
+        run: |
+          EXTRA=""
+          if [ "${{ inputs.scrape_only }}" = "true" ]; then EXTRA="--scrape-only"; fi
+          python run_pipeline.py --date "${{ inputs.date }}" $EXTRA
 
-      - name: Run pipeline with custom URLs
+      - name: Run with custom URLs
         if: ${{ inputs.urls != '' }}
         env:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.6-sol' }}
-        run: python run_pipeline.py --date "${{ inputs.date }}" --urls ${{ inputs.urls }}
+        run: |
+          EXTRA=""
+          if [ "${{ inputs.scrape_only }}" = "true" ]; then EXTRA="--scrape-only"; fi
+          python run_pipeline.py --date "${{ inputs.date }}" $EXTRA --urls ${{ inputs.urls }}
 
       - name: Commit results
         run: |
@@ -54,6 +65,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes"
           else
-            git commit -m "Add prediction results for ${{ inputs.date }}"
+            git commit -m "Add scrape results for ${{ inputs.date }}"
             git push
           fi
