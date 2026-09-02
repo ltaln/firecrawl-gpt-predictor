@@ -1,0 +1,30 @@
+name: GPT Collection Control
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  actions: write
+  contents: read
+  issues: write
+
+jobs:
+  dispatch:
+    if: github.actor == github.repository_owner && startsWith(github.event.issue.title, 'collect ')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch collection workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          REQUEST_TITLE: ${{ github.event.issue.title }}
+        shell: bash
+        run: |
+          DATE="${REQUEST_TITLE#collect }"
+          if [[ ! "$DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] || ! date -d "$DATE" '+%Y-%m-%d' >/dev/null 2>&1; then
+            gh issue close "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --comment "Invalid date. Use: collect YYYY-MM-DD"
+            exit 1
+          fi
+          gh workflow run predict.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME" -f date="$DATE"
+          gh issue close "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --comment "Collection dispatched for $DATE."
