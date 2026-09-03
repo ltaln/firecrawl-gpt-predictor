@@ -17,7 +17,8 @@
 
 可选变量：
 
-- `FIRECRAWL_ENDPOINT`：Firecrawl v2 scrape 完整地址。未设置时继续使用 Cloud；自建示例为 `http://服务器:3002/v2/scrape`。
+- `FIRECRAWL_ENDPOINT`：Firecrawl v2 scrape 完整 HTTPS 地址。未设置时继续使用 Cloud。
+- `FIRECRAWL_SELFHOST_API_KEY`：自建服务的访问令牌。设置自建入口后工作流使用此令牌；原 `FIRECRAWL_API_KEY` 保留用于 Cloud 回退。删除 `FIRECRAWL_ENDPOINT` 即恢复 Cloud。
 - `OPENAI_MODEL`：默认 `gpt-5.6-sol`。
 
 ## 本地运行
