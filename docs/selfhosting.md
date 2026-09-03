@@ -57,3 +57,19 @@ Run the existing `Firecrawl Data Collection` workflow and check both collection
 and package completeness. To roll back, delete `FIRECRAWL_ENDPOINT`; the workflow
 will use the original Cloud endpoint and Cloud key again. There is deliberately no
 silent fallback during verification: a self-host failure must remain visible.
+
+## Migration verification — 2026-09-04
+
+- The fixed Cloud contract (`20260902T144150Z`): 69/69 pages passed, with 100%
+  normalized source-line coverage on each page.
+- HTTPS, unauthorized-request rejection and post-restart scraping passed.
+- [GitHub integration run 33816088800](https://github.com/ltaln/firecrawl-gpt-predictor/actions/runs/33816088800):
+  87 pages scraped, zero scrape failures, 87/87 source validations passed.
+- The complete workflow **failed** its package gate: 13/27 packages complete;
+  all 13 expected target-date packages were complete, but 14 additional packages
+  were incomplete. No result commit was made by this run.
+- The unchanged package builder includes all discovered mixed-data pages and
+  assigns sequential numbers under the requested date, without date-aware mapping.
+  Extra live-page discoveries expose this separate downstream issue. The builder
+  must be corrected before claiming full workflow acceptance; collector logic
+  remains unchanged apart from endpoint configuration.
