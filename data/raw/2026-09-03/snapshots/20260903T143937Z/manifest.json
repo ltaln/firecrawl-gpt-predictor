@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-03",
+  "snapshot_id": "20260903T143937Z",
+  "started_at": "2026-09-03T14:39:37.454471+00:00",
+  "scraped_pages": 40,
+  "failed_pages": 0,
+  "category_counts": {
+    "match_list": 2,
+    "internal_model_analysis": 1,
+    "daily_asian_handicap_summary": 1,
+    "mixed_data": 7,
+    "asian_handicap_changes": 7,
+    "score_odds_changes": 8,
+    "predicted_lineup": 7,
+    "historical_lineup_ratings": 7
+  },
+  "source_validation": "data/raw/2026-09-03/snapshots/20260903T143937Z/source_validation.json",
+  "url_discovery": "data/raw/2026-09-03/snapshots/20260903T143937Z/url_discovery.json",
+  "mode": "data-only"
+}

@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-03",
+  "snapshot_id": "20260903T143937Z",
+  "match_count": 7,
+  "complete_matches": 7,
+  "matches": [
+    {
+      "match_no": 1,
+      "code": "20260903001",
+      "file": "match_001_20260903001.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 2,
+      "code": "20260903002",
+      "file": "match_002_20260903002.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 3,
+      "code": "20260903003",
+      "file": "match_003_20260903003.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 4,
+      "code": "20260903004",
+      "file": "match_004_20260903004.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 5,
+      "code": "20260903005",
+      "file": "match_005_20260903005.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 6,
+      "code": "20260903006",
+      "file": "match_006_20260903006.json",
+      "complete": true,
+      "section_count": 5
+    },
+    {
+      "match_no": 7,
+      "code": "20260903007",
+      "file": "match_007_20260903007.json",
+      "complete": true,
+      "section_count": 5
+    }
+  ]
+}

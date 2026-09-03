@@ -1,0 +1,783 @@
+
+
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+	<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"L0zMSFpaSidCot1s",ck:"L0zMSFpaSidCot1s"})</script>
+        <title>小爱AI分析决策系统 — 皇后体育</title>
+
+        <style>
+        white-space: pre; font-family: inherit; font-size: inherit;
+        /* 新增搜索表单样式 */
+        .search-form {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .search-form .form-group {
+            margin-bottom: 15px;
+        }
+        .search-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .search-form input, .search-form select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .search-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .search-form button:hover {
+            background-color: #45a049;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+        .form-col {
+            flex: 1;
+            padding: 0 10px;
+            min-width: 200px;
+        }
+        
+        .table-fix {
+          table-layout: fixed;
+          width: 100%;
+        }
+        .txt-ell {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 150px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        tr:nth-child(even) {
+            background-color: #f6f1f1;
+        }
+        .pagination {
+            margin: 20px 0;
+        }
+        .pagination a {
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 2px;
+        }
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        button {
+            padding: 6px 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #4CAF50;
+            background-color: white;
+            color: #4CAF50;
+            border-radius: 4px;
+     
+            white-space: nowrap; /* 防止文字换行 */
+        button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .pagination a, 
+        .pagination span {
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 2px;
+            color: #333;
+        }
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+        .pagination span {
+            border: none;
+            color: #666;
+        }
+        .single-page {
+            padding: 8px 16px;
+            color: #666;
+        }
+        </style>
+    </head>
+    <body>
+
+        <!-- 添加搜索表单 -->
+        <div class="search-form">
+            <form method="get" action="">
+                <input type="hidden" name="page" value="1">
+                <div class="form-row">
+<div class="form-col">
+     <div class="form-group">
+          <label for="search_league">联赛</label>
+          <input type="text" id="search_league" name="search_league" value="" placeholder="输入联赛名称">
+                        </div>
+                    </div>
+<div class="form-col">
+    <div class="form-group">
+        <label for="search_home">主队</label>
+        <input type="text" id="search_home" name="search_home" value="" placeholder="输入主队名称">
+    </div>
+</div>
+<div class="form-col">
+    <div class="form-group">
+        <label for="search_away">客队</label>
+        <input type="text" id="search_away" name="search_away" value="" placeholder="输入客队名称">
+    </div>
+</div>
+
+<div class="form-col">
+    <div class="form-group">
+        <label for="search_chupan">机构初盘</label>
+        <input type="text" id="search_chupan" name="search_chupan" value="" placeholder="机构初盘">
+    </div>
+</div>
+
+<div class="form-col">
+    <div class="form-group">
+        <label for="search_jipan">机构即盘</label>
+        <input type="text" id="search_jipan" name="search_jipan" value="" placeholder="机构即盘">
+    </div>
+</div>
+
+<div class="form-col">
+    <div class="form-group">
+        <label for="search_jqcyz">进球差异赋值</label>
+        <input type="text" id="search_jqcyz" name="search_jqcyz" value="" placeholder="进球差异赋值">
+    </div>
+</div>
+<div class="form-col">
+    <div class="form-group">
+        <label for="jqcyz_search_mode">进球差异搜索选择</label>
+        <select id="jqcyz_search_mode" name="jqcyz_search_mode">
+            <option value="exact" selected>精准模式</option>
+            <option value="fuzzy" >模糊模式</option>
+
+<input type="hidden" name="other_search" value="1">
+             </select>
+             </div>
+             </div>                   
+
+                </div>
+<div class="form-col">
+<div class="button-container">
+<button type="button" onclick="window.open('https://www.hh520.com/tx/gengxinbs.php','_blank')" style="margin-left:10px;background-color:#ed4613eb;">更新今日比赛</button>
+<button type="button" onclick="window.open('https://www.hh520.com/tx/gxj.php','_blank')" style="margin-left:10px;background-color:#ed4613eb;">更新即盘人气</button>
+
+<button type="submit" style="margin-left:10px;background-color:#4CAF50;">搜索</button>
+<button type="button" onclick="window.location.href='?';" style="margin-left:10px;background-color:#6c757d;">重置</button>
+<button type="button" onclick="window.open('https://www.hh520.com/tx/gengxinbf.php?e=2026-09-03','_blank')" style="margin-left:10px;background-color:#e3102d;">更新今日比赛结果</button>
+<button type="button" onclick="window.open('https://www.hh520.com/tx/gengxinbf.php?e=2026-09-02','_blank')" style="margin-left:10px;background-color:#e3102d;">更新昨日比赛结果</button>
+<button type="button" onclick="window.open('https://www.hh520.com/tx/s.php','_blank')" style="margin-left:10px;background-color:#cb0e17;">历史数据</button>	
+<button type="button" onclick="window.open('https://www.hh520.com/tx/zhdy.php','_blank')" style="margin-left:10px;background-color:#8c1ba1;">小爱算法<推荐></button>
+<button type="button" onclick="window.open('https://www.hh520.com/tx/10012.php','_blank')" style="margin-left:10px;background-color:#8c1ba1;">亚盘<推荐></button>	
+<button type="button" onclick="window.open('https://www.hh520.com','_blank')" style="margin-left:10px;background-color:#8c1ba1;">皇后体育官网<推荐></button>
+<button type="button" onclick="window.open('https://www.hh520.com/tx/guanyu','_blank')" style="margin-left:10px;background-color:#cb0e17;">联系开发者</button>
+				</div> </div> </form> </div>
+
+        <table border="1">
+                <tr>
+    <th>日期</th>
+    <th>场次</th>
+    <th>联赛</th>
+    <th>主队</th>
+    <th>客队</th>
+    <th>投注建议</th>
+    <th>阈值(正负20)</th>
+    <th>阈值提示</th>
+    <th>预测下决断</th>
+
+    <th>比赛结果</th>
+    <th>结果比分</th>
+    <th>预测结果</th>
+    <th>场次</th>
+
+    <th>数据盘口</th>
+    <th>机构初盘</th>
+    <th>机构即盘</th>
+    <th>盘口风险提示</th>
+    <th>盘口建议</th>
+    <th>人气值/半全场出平</th>
+
+
+
+	<th>7M预测</th>
+	<th>博冷预测</th>
+    <th>双预测下决断</th>
+    <th>AI数据清洗</th>
+    <th>主队身价</th>
+    <th>客队身价</th>
+    <th>比例</th>
+
+   
+    <th>主队预期进球</th>
+    <th>客队预期进球</th>
+    <th>预期总进球</th>
+
+    <th>进球差距</th>
+	<th>结果比分</th>
+    <th>主胜概率</th>
+    <th>平局概率</th>
+    <th>客胜概率</th>
+    <th>全场平局概率</th>
+    <th>结果出平</th>
+
+
+
+    </tr>
+        <tr>
+        <td><span class="txt-ell">2026-09-03</td>
+        <td><span class="txt-ell">1</td>
+        <td><span class="txt-ell">沙职</td>
+        <td><span class="txt-ell">迈季宽广</td>
+        <td><span class="txt-ell">拉斯永恒</td>
+        <td><span class="txt-ell" style="white-space: pre;">主  21.32 => 平  29.75 => 客  28.45 => <span style='color:red;'>客胜（28.45%) </span></span></td>
+        <td><span class="txt-ell">值: -20 </span></td>
+        <td><span class="txt-ell"> </span></td>
+        <td><span class="txt-ell"></span></td>
+
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"><span style='color:#2b00ff   '>01 </span></td>
+        <td><span class="txt-ell">平手 (0)</span></td>
+        <td><span class="txt-ell">平手</td>
+        <td><span class="txt-ell">受平/半</td>
+
+        <td><span class="txt-ell">  <span style='color:#2b00ff   '> </span></td>
+        <td><span class="txt-ell"><a href="/tx/10013.php?date=2026-09-03&changci=1" target="_blank" title="点击查看详情">亚盘（新算法）</a> 32.8/ 30.9/ 45 趋势：主胜信心减弱，客胜热度上升</td>
+        <td><span class="txt-ell">（14/36/49） 出平</span></td>
+
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></span></td>
+<td>
+    <button class="view-btn" 
+        data-riqi="2026-09-03" 
+        data-changci="1">
+        查看
+    </button>
+</td>
+
+
+        <td><span class="txt-ell">1427.50</td>
+        <td><span class="txt-ell">1630.00</td>
+        <td><span class="txt-ell">1/1.14</td>
+
+
+        <td><span class="txt-ell">1.44球</td>
+        <td><span class="txt-ell">1.5球</td>
+        <td><span class="txt-ell">2.94球</td>
+
+        <td><span class="txt-ell">-0.06</td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell">1466%</td>
+        <td><span class="txt-ell">-2974.8%</td>
+        <td><span class="txt-ell"> 1608.7%</td>
+        <td><span class="txt-ell">赔率概率: 29.15%
+双八预测: 高平局倾向
+综合概率: 33.95%
+风险评估: 高平局可能（出平几率高） </span></td>
+        <td><span class="txt-ell"></span></td>
+
+
+
+
+                  </tr>
+        <tr>
+        <td><span class="txt-ell">2026-09-03</td>
+        <td><span class="txt-ell">2</td>
+        <td><span class="txt-ell">沙职</td>
+        <td><span class="txt-ell">新未来SC</td>
+        <td><span class="txt-ell">赛哈海湾</td>
+        <td><span class="txt-ell" style="white-space: pre;">主  45.45 => 平  28.59 => 客  13.42 => <span style='color:#000000;'>主胜（45.45%) </span>推荐</span></td>
+        <td><span class="txt-ell">值: 45 </span></td>
+        <td><span class="txt-ell"> </span></td>
+        <td><span class="txt-ell"><主队胜> 95%胜 3%平2</span></td>
+
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"><span style='color:#2b00ff   '>02 </span></td>
+        <td><span class="txt-ell">两球 (2)</span></td>
+        <td><span class="txt-ell">半球</td>
+        <td><span class="txt-ell">半球/一球</td>
+
+        <td><span class="txt-ell">  <span style='color:#2b00ff   '> </span></td>
+        <td><span class="txt-ell"><a href="/tx/10013.php?date=2026-09-03&changci=2" target="_blank" title="点击查看详情">亚盘（新算法）</a> 59.5/ 26.6/ 22.7 趋势：无明显趋势</td>
+        <td><span class="txt-ell">（77/17/6）</span></td>
+
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></span></td>
+<td>
+    <button class="view-btn" 
+        data-riqi="2026-09-03" 
+        data-changci="2">
+        查看
+    </button>
+</td>
+
+
+        <td><span class="txt-ell">8235.00</td>
+        <td><span class="txt-ell">2127.50</td>
+        <td><span class="txt-ell">3.87/1</td>
+
+
+        <td><span class="txt-ell">1.38球</td>
+        <td><span class="txt-ell">0.94球</td>
+        <td><span class="txt-ell">2.32球</td>
+
+        <td><span class="txt-ell">0.44</td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell">1899.3%</td>
+        <td><span class="txt-ell">-2858.8%</td>
+        <td><span class="txt-ell"> 1059.5%</td>
+        <td><span class="txt-ell">赔率概率: 26.22%
+双八预测: 高平局倾向
+综合概率: 31.02%
+风险评估: 高平局可能（出平几率高） </span></td>
+        <td><span class="txt-ell"></span></td>
+
+
+
+
+                  </tr>
+        <tr>
+        <td><span class="txt-ell">2026-09-03</td>
+        <td><span class="txt-ell">3</td>
+        <td><span class="txt-ell">瑞超</td>
+        <td><span class="txt-ell">米亚尔比</td>
+        <td><span class="txt-ell">佐加顿斯</td>
+        <td><span class="txt-ell" style="white-space: pre;">主  15.34 => 平  29.63 => 客  40.29 => <span style='color:red;'>客胜（40.29%) </span>推荐</span></td>
+        <td><span class="txt-ell">值: -45 </span></td>
+        <td><span class="txt-ell"> </span></td>
+        <td><span class="txt-ell"></span></td>
+
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"><span style='color:#2b00ff   '>03 </span></td>
+        <td><span class="txt-ell">受一球 (-1)</span></td>
+        <td><span class="txt-ell">平手</td>
+        <td><span class="txt-ell">受一球</td>
+
+        <td><span class="txt-ell">  <span style='color:#2b00ff   '> </span></td>
+        <td><span class="txt-ell"><a href="/tx/10013.php?date=2026-09-03&changci=3" target="_blank" title="点击查看详情">亚盘（新算法）</a> 23.8/ 25.8/ 54.9 趋势：主胜信心减弱，客胜热度上升</td>
+        <td><span class="txt-ell">（16/20/64）</span></td>
+
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></span></td>
+<td>
+    <button class="view-btn" 
+        data-riqi="2026-09-03" 
+        data-changci="3">
+        查看
+    </button>
+</td>
+
+
+        <td><span class="txt-ell">1755.00</td>
+        <td><span class="txt-ell">2342.50</td>
+        <td><span class="txt-ell">1/1.33</td>
+
+
+        <td><span class="txt-ell">1.25球</td>
+        <td><span class="txt-ell">1.63球</td>
+        <td><span class="txt-ell">2.88球</td>
+
+        <td><span class="txt-ell">-0.38</td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell">1192.8%</td>
+        <td><span class="txt-ell">-2963%</td>
+        <td><span class="txt-ell"> 1870.2%</td>
+        <td><span class="txt-ell">赔率概率: 26.52%
+双八预测: 低平局倾向
+综合概率: 19.62%
+风险评估: 低平局可能 </span></td>
+        <td><span class="txt-ell"></span></td>
+
+
+
+
+                  </tr>
+        <tr>
+        <td><span class="txt-ell">2026-09-03</td>
+        <td><span class="txt-ell">4</td>
+        <td><span class="txt-ell">沙职</td>
+        <td><span class="txt-ell">迪里耶</td>
+        <td><span class="txt-ell">胡巴卡德</td>
+        <td><span class="txt-ell" style="white-space: pre;">主   12.1 => 平  29.52 => 客  66.35 => <span style='color:red;'>客胜（66.35%) </span>推荐</span></td>
+        <td><span class="txt-ell">值: -10 </span></td>
+        <td><span class="txt-ell"> </span></td>
+        <td><span class="txt-ell"></span></td>
+
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"><span style='color:#2b00ff   '>04 </span></td>
+        <td><span class="txt-ell">受一球/球半 (-1.75)</span></td>
+        <td><span class="txt-ell">受一球</td>
+        <td><span class="txt-ell">受一球/球半</td>
+
+        <td><span class="txt-ell">从中风险变为低风险  <span style='color:#2b00ff   '> </span></td>
+        <td><span class="txt-ell"><a href="/tx/10013.php?date=2026-09-03&changci=4" target="_blank" title="点击查看详情">亚盘（新算法）</a> 17.2/ 20.7/ 70.4 趋势：主胜信心减弱</td>
+        <td><span class="txt-ell">（7/12/81）</span></td>
+
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></span></td>
+<td>
+    <button class="view-btn" 
+        data-riqi="2026-09-03" 
+        data-changci="4">
+        查看
+    </button>
+</td>
+
+
+        <td><span class="txt-ell">7187.50</td>
+        <td><span class="txt-ell">16370.00</td>
+        <td><span class="txt-ell">1/2.28</td>
+
+
+        <td><span class="txt-ell">1.06球</td>
+        <td><span class="txt-ell">1.63球</td>
+        <td><span class="txt-ell">2.69球</td>
+
+        <td><span class="txt-ell">-0.57</td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell">1019.3%</td>
+        <td><span class="txt-ell">-2952.3%</td>
+        <td><span class="txt-ell"> 2033%</td>
+        <td><span class="txt-ell">赔率概率: 20.51%
+双八预测: 低平局倾向
+综合概率: 13.61%
+风险评估: 低平局可能 </span></td>
+        <td><span class="txt-ell"></span></td>
+
+
+
+
+                  </tr>
+        <tr>
+        <td><span class="txt-ell">2026-09-03</td>
+        <td><span class="txt-ell">5</td>
+        <td><span class="txt-ell">法甲</td>
+        <td><span class="txt-ell">图卢兹</td>
+        <td><span class="txt-ell">里尔</td>
+        <td><span class="txt-ell" style="white-space: pre;">主  10.95 => 平  30.63 => 客  46.43 => <span style='color:red;'>客胜（46.43%) </span>推荐</span></td>
+        <td><span class="txt-ell">值: -5 </span></td>
+        <td><span class="txt-ell"> </span></td>
+        <td><span class="txt-ell"></span></td>
+
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"><span style='color:#2b00ff   '>05 </span></td>
+        <td><span class="txt-ell">受一球 (-1)</span></td>
+        <td><span class="txt-ell">受平/半</td>
+        <td><span class="txt-ell">受半球</td>
+
+        <td><span class="txt-ell">  <span style='color:#2b00ff   '> </span></td>
+        <td><span class="txt-ell"><a href="/tx/10013.php?date=2026-09-03&changci=5" target="_blank" title="点击查看详情">亚盘（新算法）</a> 25.8/ 28.7/ 51 趋势：主胜信心减弱，客胜热度上升</td>
+        <td><span class="txt-ell">（10/22/68）</span></td>
+
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></span></td>
+<td>
+    <button class="view-btn" 
+        data-riqi="2026-09-03" 
+        data-changci="5">
+        查看
+    </button>
+</td>
+
+
+        <td><span class="txt-ell">12890.00</td>
+        <td><span class="txt-ell">24610.00</td>
+        <td><span class="txt-ell">1/1.91</td>
+
+
+        <td><span class="txt-ell">1.06球</td>
+        <td><span class="txt-ell">1.94球</td>
+        <td><span class="txt-ell">3球</td>
+
+        <td><span class="txt-ell">-0.88</td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell">838%</td>
+        <td><span class="txt-ell">-3063%</td>
+        <td><span class="txt-ell"> 2325%</td>
+        <td><span class="txt-ell">赔率概率: 28.26%
+双八预测: 低平局倾向
+综合概率: 21.36%
+风险评估: 中等平局可能（出平几率高） </span></td>
+        <td><span class="txt-ell"></span></td>
+
+
+
+
+                  </tr>
+        <tr>
+        <td><span class="txt-ell">2026-09-03</td>
+        <td><span class="txt-ell">6</td>
+        <td><span class="txt-ell">西甲</td>
+        <td><span class="txt-ell">皇家社会</td>
+        <td><span class="txt-ell">塞尔塔</td>
+        <td><span class="txt-ell" style="white-space: pre;">主  29.23 => 平  29.19 => 客   21.1 => <span style='color:#000000;'>主胜（29.23%) </span></span></td>
+        <td><span class="txt-ell">值: -20 </span></td>
+        <td><span class="txt-ell">预警 主队<胜不了> </span></td>
+        <td><span class="txt-ell"></span></td>
+
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"><span style='color:#2b00ff   '>06 </span></td>
+        <td><span class="txt-ell">半球 (0.5)</span></td>
+        <td><span class="txt-ell">半球</td>
+        <td><span class="txt-ell">半球</td>
+
+        <td><span class="txt-ell">  <span style='color:#2b00ff   '> </span></td>
+        <td><span class="txt-ell"><a href="/tx/10013.php?date=2026-09-03&changci=6" target="_blank" title="点击查看详情">亚盘（新算法）</a> 54.3/ 27.2/ 23.9 趋势：无明显趋势</td>
+        <td><span class="txt-ell">（64/26/10）</span></td>
+
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></span></td>
+<td>
+    <button class="view-btn" 
+        data-riqi="2026-09-03" 
+        data-changci="6">
+        查看
+    </button>
+</td>
+
+
+        <td><span class="txt-ell">27830.00</td>
+        <td><span class="txt-ell">17300.00</td>
+        <td><span class="txt-ell">1.61/1</td>
+
+
+        <td><span class="txt-ell">1.31球</td>
+        <td><span class="txt-ell">1.44球</td>
+        <td><span class="txt-ell">2.75球</td>
+
+        <td><span class="txt-ell">-0.13</td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell">1388.8%</td>
+        <td><span class="txt-ell">-2919%</td>
+        <td><span class="txt-ell"> 1630.2%</td>
+        <td><span class="txt-ell">赔率概率: 28.06%
+双八预测: 高平局倾向
+综合概率: 32.86%
+风险评估: 高平局可能（出平几率高） </span></td>
+        <td><span class="txt-ell"></span></td>
+
+
+
+
+                  </tr>
+        <tr>
+        <td><span class="txt-ell">2026-09-03</td>
+        <td><span class="txt-ell">7</td>
+        <td><span class="txt-ell">巴西杯</td>
+        <td><span class="txt-ell">格雷米奥</td>
+        <td><span class="txt-ell">巴西国际</td>
+        <td><span class="txt-ell" style="white-space: pre;">主  31.83 => 平  30.01 => 客  16.25 => <span style='color:#000000;'>主胜（31.83%) </span></span></td>
+        <td><span class="txt-ell">值: 10 </span></td>
+        <td><span class="txt-ell"> </span></td>
+        <td><span class="txt-ell"></span></td>
+
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell"><span style='color:#2b00ff   '>07 </span></td>
+        <td><span class="txt-ell">一球/球半 (1.75)</span></td>
+        <td><span class="txt-ell">平手</td>
+        <td><span class="txt-ell">平手</td>
+
+        <td><span class="txt-ell">  <span style='color:#2b00ff   '> </span></td>
+        <td><span class="txt-ell"><a href="/tx/10013.php?date=2026-09-03&changci=7" target="_blank" title="点击查看详情">亚盘（新算法）</a> 37.7/ 35/ 35.6 趋势：主胜信心减弱，客胜热度上升</td>
+        <td><span class="txt-ell">（41/45/14） 出平</span></td>
+
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></td>
+        <td><span class="txt-ell"></span></td>
+<td>
+    <button class="view-btn" 
+        data-riqi="2026-09-03" 
+        data-changci="7">
+        查看
+    </button>
+</td>
+
+
+        <td><span class="txt-ell">9375.00</td>
+        <td><span class="txt-ell">6820.00</td>
+        <td><span class="txt-ell">1.37/1</td>
+
+
+        <td><span class="txt-ell">1.69球</td>
+        <td><span class="txt-ell">1.13球</td>
+        <td><span class="txt-ell">2.82球</td>
+
+        <td><span class="txt-ell">0.56</td>
+        <td><span class="txt-ell"></span></td>
+        <td><span class="txt-ell">2019.3%</td>
+        <td><span class="txt-ell">-3001.3%</td>
+        <td><span class="txt-ell"> 1082%</td>
+        <td><span class="txt-ell">赔率概率: 32.18%
+双八预测: 低平局倾向
+综合概率: 25.28%
+风险评估: 中等平局可能（出平几率高） </span></td>
+        <td><span class="txt-ell"></span></td>
+
+
+
+
+                  </tr></table><div class="pagination"><span class="single-page">共1页</span></div><!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>查看内容示例</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+/* 模态框样式 */
+#modalOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+
+#modalContent {
+    position: fixed;
+    top: 70%;
+    left: 60%;
+    transform: translate(-70%, -70%);
+    background: #fff;
+    padding: 20px;
+    width: 1000px;
+    max-height: 80%;
+    overflow-y: auto;
+    box-shadow: 0 0 10px #000;
+    border-radius: 8px;
+}
+#modalClose {
+    float: right;
+    cursor: pointer;
+    font-weight: bold;
+}
+/* 手机优化 */
+@media (max-width: 600px) {
+    #modalContent {
+        width: 95%;
+        padding: 10px;
+        font-size: 14px;
+    }
+    .view-btn {
+        padding: 5px 10px;
+        font-size: 13px;
+    }
+    table, td, th {
+        font-size: 13px;
+    }
+}
+</style>
+</head>
+<body></table><div id="modalOverlay">
+        <div id="modalContent">
+            <span id="modalClose">×</span>
+            <div id="modalBody"></div>
+        </div>
+      </div><script>
+$(document).ready(function(){
+    $(document).on("click", ".view-btn", function(){
+        var riqi = $(this).data("riqi");
+        var changci = $(this).data("changci");
+
+        $.ajax({
+            url: "get_neirong.php",
+            type: "GET",
+            data: {riqi: riqi, changci: changci},
+            success: function(data){
+                $("#modalBody").html(data); // 将数据库内容放入模态框
+                $("#modalOverlay").fadeIn();
+            },
+            error: function(xhr, status, error){
+                alert("获取数据失败！\n状态：" + status + "\n错误：" + error);
+            }
+        });
+    });
+
+    // 关闭按钮
+    $("#modalClose").click(function(){
+        $("#modalOverlay").fadeOut();
+    });
+
+    // 点击遮罩关闭
+    $("#modalOverlay").click(function(e){
+        if(e.target == this){
+            $(this).fadeOut();
+        }
+    });
+});
+</script></body></html>

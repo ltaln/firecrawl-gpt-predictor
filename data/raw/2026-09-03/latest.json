@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-03",
+  "snapshot_id": "20260903T143937Z",
+  "snapshot_dir": "data/raw/2026-09-03/snapshots/20260903T143937Z",
+  "manifest": "data/raw/2026-09-03/snapshots/20260903T143937Z/manifest.json",
+  "source_validation": "data/raw/2026-09-03/snapshots/20260903T143937Z/source_validation.json",
+  "url_discovery": "data/raw/2026-09-03/snapshots/20260903T143937Z/url_discovery.json"
+}
