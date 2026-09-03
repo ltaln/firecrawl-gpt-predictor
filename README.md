@@ -15,13 +15,17 @@
 - `FIRECRAWL_API_KEY`
 - `OPENAI_API_KEY`
 
-可选变量：`OPENAI_MODEL`，默认 `gpt-5.6-sol`。
+可选变量：
+
+- `FIRECRAWL_ENDPOINT`：Firecrawl v2 scrape 完整地址。未设置时继续使用 Cloud；自建示例为 `http://服务器:3002/v2/scrape`。
+- `OPENAI_MODEL`：默认 `gpt-5.6-sol`。
 
 ## 本地运行
 
 ```bash
 pip install -r requirements.txt
 export FIRECRAWL_API_KEY=...
+export FIRECRAWL_ENDPOINT=http://127.0.0.1:3002/v2/scrape
 export OPENAI_API_KEY=...
 python run_pipeline.py --date 2026-09-01
 ```

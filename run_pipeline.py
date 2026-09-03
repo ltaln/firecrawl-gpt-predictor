@@ -12,7 +12,7 @@ from urllib.parse import parse_qs, urljoin, urlparse, urlunparse
 
 import requests
 
-FIRECRAWL_ENDPOINT = "https://api.firecrawl.dev/v2/scrape"
+FIRECRAWL_ENDPOINT = os.environ.get("FIRECRAWL_ENDPOINT") or "https://api.firecrawl.dev/v2/scrape"
 BASE_URL = "https://www.hh520.com/"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36"
 

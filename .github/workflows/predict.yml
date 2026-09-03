@@ -46,6 +46,7 @@ jobs:
       - name: Run scrape, discovery and source validation
         env:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          FIRECRAWL_ENDPOINT: ${{ secrets.FIRECRAWL_ENDPOINT }}
         run: |
           DATE="${{ github.event.inputs.date || '2026-09-02' }}"
           URLS="${{ github.event.inputs.urls || '' }}"
