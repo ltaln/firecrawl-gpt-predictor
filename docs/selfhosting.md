@@ -1,7 +1,8 @@
 # Firecrawl self-host migration
 
-The collector's URL discovery, request payload, source validation, package builder,
-and prediction rules are unchanged. Only the scrape endpoint is configurable.
+The collector's URL discovery, request payload, source validation and prediction
+rules are unchanged. The scrape endpoint is configurable; the package builder now
+uses the multi-page fixture identity checks described below.
 
 ## Deployment
 
@@ -99,4 +100,17 @@ packages from saved Firecrawl data without spending another scrape request.
 Offline verification used the saved 2026-09-02 Cloud snapshot and the saved
 2026-09-04 self-host snapshot: 13/13 and 14/14 fixtures passed respectively.
 Mixing both snapshots still yields the correct 13 identities for the September 2
-roster, retaining the other 14 discoveries separately. Overnight matches are kept.
+  roster, retaining the other 14 discoveries separately. Overnight matches are kept.
+
+### Completed workflow acceptance
+
+[Run 33872984343](https://github.com/ltaln/firecrawl-gpt-predictor/actions/runs/33872984343)
+completed successfully: all 15 safeguard tests passed, the saved Firecrawl snapshot
+`20260904T075024Z` produced 14/14 complete identity-verified packages, and the result
+commit succeeded. Collection was explicitly skipped using `reuse_snapshot=true`;
+this acceptance run made no new Firecrawl scrape requests. The earlier 69-page
+live comparison and 87/87 integration source validations remain the scrape evidence.
+
+For example, code `20260904001` / `xi=6116` retains the actual kickoff
+`2026-09-05 00:30`. The historical package-gate blocker above is resolved by explicit
+fixture matching, not by excluding matches whose kickoff falls on another day.
