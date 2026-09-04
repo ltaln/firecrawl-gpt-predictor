@@ -1,0 +1,602 @@
+{
+  "date": "2026-09-04",
+  "snapshot_id": "20260904T075024Z",
+  "match_count": 14,
+  "complete_matches": 14,
+  "matches": [
+    {
+      "match_no": 1,
+      "code": "20260904001",
+      "xi": "6116",
+      "file": "match_001_20260904001.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "汉诺威96",
+            "卡尔斯鲁厄"
+          ],
+          [
+            "汉诺威96",
+            "卡斯鲁厄"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=1",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=1",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904001",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904001",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    },
+    {
+      "match_no": 2,
+      "code": "20260904002",
+      "xi": "6117",
+      "file": "match_002_20260904002.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "里昂",
+            "欧塞尔"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=2",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=2",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904002",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904002",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    },
+    {
+      "match_no": 3,
+      "code": "20260904003",
+      "xi": "6118",
+      "file": "match_003_20260904003.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "腓特烈",
+            "博德闪耀"
+          ],
+          [
+            "腓特烈斯塔",
+            "博德闪耀"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=3",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=3",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904003",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904003",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    },
+    {
+      "match_no": 4,
+      "code": "20260904004",
+      "xi": "6119",
+      "file": "match_004_20260904004.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "利雅得青年人",
+            "利雅得新月"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=4",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=4",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904004",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904004",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    },
+    {
+      "match_no": 5,
+      "code": "20260904005",
+      "xi": "6120",
+      "file": "match_005_20260904005.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "格勒诺布",
+            "阿纳西"
+          ],
+          [
+            "格勒诺布尔",
+            "昂纳西"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=5",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=5",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904005",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904005",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    },
+    {
+      "match_no": 6,
+      "code": "20260904006",
+      "xi": "6121",
+      "file": "match_006_20260904006.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "鹿斯巴达",
+            "兹沃勒"
+          ],
+          [
+            "鹿特丹斯巴达",
+            "兹沃勒"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=6",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=6",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904006",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904006",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    },
+    {
+      "match_no": 7,
+      "code": "20260904007",
+      "xi": "6122",
+      "file": "match_007_20260904007.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "埃门",
+            "福伦丹"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=7",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=7",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904007",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904007",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    },
+    {
+      "match_no": 8,
+      "code": "20260904008",
+      "xi": "6123",
+      "file": "match_008_20260904008.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "斯图加特",
+            "科隆"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=8",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=8",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904008",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904008",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    },
+    {
+      "match_no": 9,
+      "code": "20260904009",
+      "xi": "6124",
+      "file": "match_009_20260904009.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "热那亚",
+            "科莫"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=9",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=9",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904009",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904009",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    },
+    {
+      "match_no": 10,
+      "code": "20260904010",
+      "xi": "6125",
+      "file": "match_010_20260904010.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "伊普斯",
+            "利物浦"
+          ],
+          [
+            "伊普斯维奇",
+            "利物浦"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=10",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=10",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904010",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904010",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    },
+    {
+      "match_no": 11,
+      "code": "20260904011",
+      "xi": "6126",
+      "file": "match_011_20260904011.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "贝蒂斯",
+            "皇马"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=11",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=11",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904011",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904011",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    },
+    {
+      "match_no": 12,
+      "code": "20260904012",
+      "xi": "6127",
+      "file": "match_012_20260904012.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "巴黎圣日耳曼",
+            "摩纳哥"
+          ],
+          [
+            "巴黎圣曼",
+            "摩纳哥"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=12",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=12",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904012",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904012",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    },
+    {
+      "match_no": 13,
+      "code": "20260904013",
+      "xi": "6128",
+      "file": "match_013_20260904013.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "波尔图",
+            "摩雷伦斯"
+          ],
+          [
+            "波尔图",
+            "莫雷拉人"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=13",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=13",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904013",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904013",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    },
+    {
+      "match_no": 14,
+      "code": "20260904014",
+      "xi": "6129",
+      "file": "match_014_20260904014.json",
+      "complete": true,
+      "section_count": 5,
+      "identity_check": {
+        "result": "PASS",
+        "errors": [],
+        "verified_team_pairs": [
+          [
+            "纽约城",
+            "纳什维尔"
+          ],
+          [
+            "纽约城",
+            "纳什维尔sc"
+          ]
+        ],
+        "evidence": {
+          "asian_handicap_changes": {
+            "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=14",
+            "result": "PASS",
+            "error": null
+          },
+          "score_odds_changes": {
+            "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=14",
+            "result": "PASS",
+            "error": null
+          },
+          "predicted_lineup": {
+            "url": "https://www.hh520.com/tx/10016.php?code=20260904014",
+            "result": "PASS",
+            "error": null
+          },
+          "historical_lineup_ratings": {
+            "url": "https://www.hh520.com/tx/10015.php?code=20260904014",
+            "result": "PASS",
+            "error": null
+          }
+        }
+      }
+    }
+  ],
+  "package_version": "identity-v1",
+  "unassigned_discoveries": []
+}
