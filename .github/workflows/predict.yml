@@ -6,7 +6,7 @@ on:
       date:
         description: "比赛日期 YYYY-MM-DD"
         required: true
-        default: "2026-09-02"
+        default: "2026-09-04"
       urls:
         description: "可选：空格分隔 URL；留空使用自动发现"
         required: false
@@ -48,7 +48,7 @@ jobs:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_ENDPOINT && secrets.FIRECRAWL_SELFHOST_API_KEY || secrets.FIRECRAWL_API_KEY }}
           FIRECRAWL_ENDPOINT: ${{ secrets.FIRECRAWL_ENDPOINT }}
         run: |
-          DATE="${{ github.event.inputs.date || '2026-09-02' }}"
+          DATE="${{ github.event.inputs.date || '2026-09-04' }}"
           URLS="${{ github.event.inputs.urls || '' }}"
           if [ -n "$URLS" ]; then
             python run_pipeline.py --date "$DATE" --urls $URLS
@@ -58,7 +58,7 @@ jobs:
 
       - name: Build per-match GPT packages
         run: |
-          DATE="${{ github.event.inputs.date || '2026-09-02' }}"
+          DATE="${{ github.event.inputs.date || '2026-09-04' }}"
           python build_match_packages.py --date "$DATE"
 
       - name: Verify match packages
@@ -75,11 +75,11 @@ jobs:
               raise SystemExit(f"Incomplete match packages: {idx['complete_matches']}/{idx['match_count']}")
           PY
         env:
-          DATE_VALUE: ${{ github.event.inputs.date || '2026-09-02' }}
+          DATE_VALUE: ${{ github.event.inputs.date || '2026-09-04' }}
 
       - name: Commit results
         run: |
-          DATE="${{ github.event.inputs.date || '2026-09-02' }}"
+          DATE="${{ github.event.inputs.date || '2026-09-04' }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/
