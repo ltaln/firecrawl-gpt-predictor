@@ -11,11 +11,18 @@ on:
         description: "可选：空格分隔 URL；留空使用自动发现"
         required: false
         default: ""
+      reuse_snapshot:
+        description: "复用已保存 Firecrawl 快照，仅重新核对比赛并打包（不重复抓取）"
+        required: false
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths:
       - "run_pipeline.py"
       - "build_match_packages.py"
+      - "match_identity.py"
+      - "tests/test_match_identity.py"
       - "urls.txt"
       - ".github/workflows/predict.yml"
 
@@ -43,7 +50,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Test fixture identity safeguards
+        run: python -m unittest discover -s tests -p 'test_match_identity.py'
+
       - name: Run scrape, discovery and source validation
+        if: ${{ github.event.inputs.reuse_snapshot != 'true' }}
         env:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_ENDPOINT && secrets.FIRECRAWL_SELFHOST_API_KEY || secrets.FIRECRAWL_API_KEY }}
           FIRECRAWL_ENDPOINT: ${{ secrets.FIRECRAWL_ENDPOINT }}
@@ -71,8 +82,10 @@ jobs:
           obj=json.loads(latest.read_text(encoding='utf-8'))
           idx=json.loads(Path(obj['index']).read_text(encoding='utf-8'))
           print(json.dumps(idx, ensure_ascii=False, indent=2))
-          if idx['match_count'] != idx['complete_matches']:
+          if not idx['match_count'] or idx['match_count'] != idx['complete_matches']:
               raise SystemExit(f"Incomplete match packages: {idx['complete_matches']}/{idx['match_count']}")
+          if any(m.get('identity_check', {}).get('result') != 'PASS' for m in idx['matches']):
+              raise SystemExit('Multi-page fixture identity verification failed')
           PY
         env:
           DATE_VALUE: ${{ github.event.inputs.date || '2026-09-04' }}

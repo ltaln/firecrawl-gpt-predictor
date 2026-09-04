@@ -73,3 +73,30 @@ silent fallback during verification: a self-host failure must remain visible.
   Extra live-page discoveries expose this separate downstream issue. The builder
   must be corrected before claiming full workflow acceptance; collector logic
   remains unchanged apart from endpoint configuration.
+
+## Multi-page identity matching (identity-v1)
+
+The requested date identifies the site's competition-day list, **not** a midnight
+cutoff. A match listed on September 4 can kick off on September 5 and remains in
+the package. The kickoff timestamp is preserved separately as `kickoff_at_raw`.
+
+The builder now follows each roster card's explicit `xi` identity and the mixed
+page's links to its four supporting pages. It validates page headers, home/away
+order, and lineup backlinks. Team spelling aliases require corroborating fixture
+identity evidence; arbitrary fuzzy matches are not accepted. Sorting `xi` IDs is
+never used to invent a match code. Missing, contradictory, empty or no-data pages
+cannot pass the identity/completeness gate.
+
+Other discovered pages remain in the raw snapshot and are reported under
+`unassigned_discoveries` when absent from the requested competition-day roster.
+They are not reassigned to another match. Old package snapshots are preserved;
+verified packages use an `_identity_v1` directory and include per-page evidence.
+
+For quota-efficient verification, manually run the existing workflow with
+`reuse_snapshot=true`. This runs the identity safeguards and rebuilds/verifies
+packages from saved Firecrawl data without spending another scrape request.
+
+Offline verification used the saved 2026-09-02 Cloud snapshot and the saved
+2026-09-04 self-host snapshot: 13/13 and 14/14 fixtures passed respectively.
+Mixing both snapshots still yields the correct 13 identities for the September 2
+roster, retaining the other 14 discoveries separately. Overnight matches are kept.
