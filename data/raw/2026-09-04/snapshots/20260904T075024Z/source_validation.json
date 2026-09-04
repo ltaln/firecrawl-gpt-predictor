@@ -1,0 +1,789 @@
+{
+  "date": "2026-09-04",
+  "snapshot_id": "20260904T075024Z",
+  "validated_urls": 78,
+  "passed": 78,
+  "checked": 0,
+  "results": [
+    {
+      "url": "https://www.hh520.com/",
+      "source_status_code": 200,
+      "source_html_chars": 88760,
+      "firecrawl_raw_html_chars": 87377,
+      "normalized_similarity": 0.999179,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/7.php",
+      "source_status_code": 200,
+      "source_html_chars": 41824,
+      "firecrawl_raw_html_chars": 42766,
+      "normalized_similarity": 0.998805,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/?date=20260904",
+      "source_status_code": 200,
+      "source_html_chars": 88778,
+      "firecrawl_raw_html_chars": 87394,
+      "normalized_similarity": 0.999179,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10012.php?date=2026-09-04",
+      "source_status_code": 200,
+      "source_html_chars": 122072,
+      "firecrawl_raw_html_chars": 122152,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/",
+      "source_status_code": 200,
+      "source_html_chars": 88760,
+      "firecrawl_raw_html_chars": 87076,
+      "normalized_similarity": 0.999179,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/?date=20260904",
+      "source_status_code": 200,
+      "source_html_chars": 88778,
+      "firecrawl_raw_html_chars": 87395,
+      "normalized_similarity": 0.999179,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6116",
+      "source_status_code": 200,
+      "source_html_chars": 65959,
+      "firecrawl_raw_html_chars": 64184,
+      "normalized_similarity": 0.999266,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6117",
+      "source_status_code": 200,
+      "source_html_chars": 65890,
+      "firecrawl_raw_html_chars": 64115,
+      "normalized_similarity": 0.999238,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6118",
+      "source_status_code": 200,
+      "source_html_chars": 65921,
+      "firecrawl_raw_html_chars": 65920,
+      "normalized_similarity": 0.999252,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6119",
+      "source_status_code": 200,
+      "source_html_chars": 65943,
+      "firecrawl_raw_html_chars": 64168,
+      "normalized_similarity": 0.999259,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6120",
+      "source_status_code": 200,
+      "source_html_chars": 65926,
+      "firecrawl_raw_html_chars": 64452,
+      "normalized_similarity": 0.999255,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6121",
+      "source_status_code": 200,
+      "source_html_chars": 65924,
+      "firecrawl_raw_html_chars": 64449,
+      "normalized_similarity": 0.999249,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6122",
+      "source_status_code": 200,
+      "source_html_chars": 65873,
+      "firecrawl_raw_html_chars": 64098,
+      "normalized_similarity": 0.999233,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6123",
+      "source_status_code": 200,
+      "source_html_chars": 65910,
+      "firecrawl_raw_html_chars": 64135,
+      "normalized_similarity": 0.999247,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6124",
+      "source_status_code": 200,
+      "source_html_chars": 65900,
+      "firecrawl_raw_html_chars": 64426,
+      "normalized_similarity": 0.999237,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6125",
+      "source_status_code": 200,
+      "source_html_chars": 65908,
+      "firecrawl_raw_html_chars": 64133,
+      "normalized_similarity": 0.999245,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6126",
+      "source_status_code": 200,
+      "source_html_chars": 65893,
+      "firecrawl_raw_html_chars": 64118,
+      "normalized_similarity": 0.999238,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6127",
+      "source_status_code": 200,
+      "source_html_chars": 65920,
+      "firecrawl_raw_html_chars": 64145,
+      "normalized_similarity": 0.99925,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6128",
+      "source_status_code": 200,
+      "source_html_chars": 65839,
+      "firecrawl_raw_html_chars": 65838,
+      "normalized_similarity": 0.999228,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6129",
+      "source_status_code": 200,
+      "source_html_chars": 65938,
+      "firecrawl_raw_html_chars": 64163,
+      "normalized_similarity": 0.99926,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=1",
+      "source_status_code": 200,
+      "source_html_chars": 338675,
+      "firecrawl_raw_html_chars": 341190,
+      "normalized_similarity": 0.999592,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=2",
+      "source_status_code": 200,
+      "source_html_chars": 342583,
+      "firecrawl_raw_html_chars": 345418,
+      "normalized_similarity": 0.999557,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=3",
+      "source_status_code": 200,
+      "source_html_chars": 237310,
+      "firecrawl_raw_html_chars": 240125,
+      "normalized_similarity": 0.999417,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=4",
+      "source_status_code": 200,
+      "source_html_chars": 274722,
+      "firecrawl_raw_html_chars": 277857,
+      "normalized_similarity": 0.999438,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=5",
+      "source_status_code": 200,
+      "source_html_chars": 264179,
+      "firecrawl_raw_html_chars": 266594,
+      "normalized_similarity": 0.999546,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=6",
+      "source_status_code": 200,
+      "source_html_chars": 266646,
+      "firecrawl_raw_html_chars": 269460,
+      "normalized_similarity": 0.999463,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=7",
+      "source_status_code": 200,
+      "source_html_chars": 236188,
+      "firecrawl_raw_html_chars": 238683,
+      "normalized_similarity": 0.999463,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=8",
+      "source_status_code": 200,
+      "source_html_chars": 271472,
+      "firecrawl_raw_html_chars": 274127,
+      "normalized_similarity": 0.999513,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=9",
+      "source_status_code": 200,
+      "source_html_chars": 253098,
+      "firecrawl_raw_html_chars": 255773,
+      "normalized_similarity": 0.999413,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=10",
+      "source_status_code": 200,
+      "source_html_chars": 376449,
+      "firecrawl_raw_html_chars": 379364,
+      "normalized_similarity": 0.999579,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=11",
+      "source_status_code": 200,
+      "source_html_chars": 315834,
+      "firecrawl_raw_html_chars": 318809,
+      "normalized_similarity": 0.999516,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=12",
+      "source_status_code": 200,
+      "source_html_chars": 268642,
+      "firecrawl_raw_html_chars": 271777,
+      "normalized_similarity": 0.999424,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=13",
+      "source_status_code": 200,
+      "source_html_chars": 311191,
+      "firecrawl_raw_html_chars": 314006,
+      "normalized_similarity": 0.999536,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=14",
+      "source_status_code": 200,
+      "source_html_chars": 235755,
+      "firecrawl_raw_html_chars": 237950,
+      "normalized_similarity": 0.999453,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com",
+      "source_status_code": 200,
+      "source_html_chars": 88756,
+      "firecrawl_raw_html_chars": 87372,
+      "normalized_similarity": 0.999179,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=1",
+      "source_status_code": 200,
+      "source_html_chars": 13256,
+      "firecrawl_raw_html_chars": 13048,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904001",
+      "source_status_code": 200,
+      "source_html_chars": 79538,
+      "firecrawl_raw_html_chars": 79112,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904001",
+      "source_status_code": 200,
+      "source_html_chars": 36029,
+      "firecrawl_raw_html_chars": 35717,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=2",
+      "source_status_code": 200,
+      "source_html_chars": 13253,
+      "firecrawl_raw_html_chars": 13045,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904002",
+      "source_status_code": 200,
+      "source_html_chars": 80411,
+      "firecrawl_raw_html_chars": 79985,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904002",
+      "source_status_code": 200,
+      "source_html_chars": 39643,
+      "firecrawl_raw_html_chars": 39331,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=3",
+      "source_status_code": 200,
+      "source_html_chars": 13255,
+      "firecrawl_raw_html_chars": 13047,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904003",
+      "source_status_code": 200,
+      "source_html_chars": 80053,
+      "firecrawl_raw_html_chars": 79627,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904003",
+      "source_status_code": 200,
+      "source_html_chars": 40679,
+      "firecrawl_raw_html_chars": 40367,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=4",
+      "source_status_code": 200,
+      "source_html_chars": 13261,
+      "firecrawl_raw_html_chars": 13053,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904004",
+      "source_status_code": 200,
+      "source_html_chars": 80078,
+      "firecrawl_raw_html_chars": 79652,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904004",
+      "source_status_code": 200,
+      "source_html_chars": 38781,
+      "firecrawl_raw_html_chars": 38469,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=5",
+      "source_status_code": 200,
+      "source_html_chars": 13257,
+      "firecrawl_raw_html_chars": 13049,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904005",
+      "source_status_code": 200,
+      "source_html_chars": 73853,
+      "firecrawl_raw_html_chars": 73427,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904005",
+      "source_status_code": 200,
+      "source_html_chars": 36773,
+      "firecrawl_raw_html_chars": 36461,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=6",
+      "source_status_code": 200,
+      "source_html_chars": 13253,
+      "firecrawl_raw_html_chars": 13045,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904006",
+      "source_status_code": 200,
+      "source_html_chars": 77659,
+      "firecrawl_raw_html_chars": 77233,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904006",
+      "source_status_code": 200,
+      "source_html_chars": 37804,
+      "firecrawl_raw_html_chars": 37492,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=7",
+      "source_status_code": 200,
+      "source_html_chars": 13249,
+      "firecrawl_raw_html_chars": 13041,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904007",
+      "source_status_code": 200,
+      "source_html_chars": 80261,
+      "firecrawl_raw_html_chars": 79835,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904007",
+      "source_status_code": 200,
+      "source_html_chars": 38553,
+      "firecrawl_raw_html_chars": 38241,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=8",
+      "source_status_code": 200,
+      "source_html_chars": 13254,
+      "firecrawl_raw_html_chars": 13046,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904008",
+      "source_status_code": 200,
+      "source_html_chars": 75329,
+      "firecrawl_raw_html_chars": 74903,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904008",
+      "source_status_code": 200,
+      "source_html_chars": 42432,
+      "firecrawl_raw_html_chars": 42120,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=9",
+      "source_status_code": 200,
+      "source_html_chars": 13256,
+      "firecrawl_raw_html_chars": 13048,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904009",
+      "source_status_code": 200,
+      "source_html_chars": 84253,
+      "firecrawl_raw_html_chars": 83827,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904009",
+      "source_status_code": 200,
+      "source_html_chars": 40616,
+      "firecrawl_raw_html_chars": 40304,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=10",
+      "source_status_code": 200,
+      "source_html_chars": 13262,
+      "firecrawl_raw_html_chars": 13054,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904010",
+      "source_status_code": 200,
+      "source_html_chars": 75452,
+      "firecrawl_raw_html_chars": 75026,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904010",
+      "source_status_code": 200,
+      "source_html_chars": 43492,
+      "firecrawl_raw_html_chars": 43180,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=11",
+      "source_status_code": 200,
+      "source_html_chars": 13262,
+      "firecrawl_raw_html_chars": 13054,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904011",
+      "source_status_code": 200,
+      "source_html_chars": 83400,
+      "firecrawl_raw_html_chars": 82974,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904011",
+      "source_status_code": 200,
+      "source_html_chars": 43430,
+      "firecrawl_raw_html_chars": 43118,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=12",
+      "source_status_code": 200,
+      "source_html_chars": 13263,
+      "firecrawl_raw_html_chars": 13055,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904012",
+      "source_status_code": 200,
+      "source_html_chars": 81685,
+      "firecrawl_raw_html_chars": 81259,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904012",
+      "source_status_code": 200,
+      "source_html_chars": 42635,
+      "firecrawl_raw_html_chars": 42323,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=13",
+      "source_status_code": 200,
+      "source_html_chars": 13279,
+      "firecrawl_raw_html_chars": 13071,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904013",
+      "source_status_code": 200,
+      "source_html_chars": 82138,
+      "firecrawl_raw_html_chars": 81712,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904013",
+      "source_status_code": 200,
+      "source_html_chars": 37878,
+      "firecrawl_raw_html_chars": 37566,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=14",
+      "source_status_code": 200,
+      "source_html_chars": 13263,
+      "firecrawl_raw_html_chars": 13055,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904014",
+      "source_status_code": 200,
+      "source_html_chars": 80069,
+      "firecrawl_raw_html_chars": 79643,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904014",
+      "source_status_code": 200,
+      "source_html_chars": 43449,
+      "firecrawl_raw_html_chars": 43137,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=15",
+      "source_status_code": 200,
+      "source_html_chars": 165,
+      "firecrawl_raw_html_chars": 204,
+      "normalized_similarity": 1.0,
+      "source_line_coverage": 1.0,
+      "missing_source_lines_sample": [],
+      "result": "PASS"
+    }
+  ]
+}

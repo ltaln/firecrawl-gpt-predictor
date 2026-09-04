@@ -1,0 +1,390 @@
+{
+  "date": "2026-09-04",
+  "snapshot_id": "20260904T075024Z",
+  "processed_pages": 78,
+  "failed_pages": 0,
+  "category_counts": {
+    "match_list": 5,
+    "internal_model_analysis": 1,
+    "daily_asian_handicap_summary": 1,
+    "mixed_data": 14,
+    "asian_handicap_changes": 14,
+    "score_odds_changes": 15,
+    "predicted_lineup": 14,
+    "historical_lineup_ratings": 14
+  },
+  "discovered": [
+    {
+      "url": "https://WWW.HH520.COM/",
+      "category": "match_list",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/?date=20260904",
+      "category": "match_list",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6116",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6117",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6118",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6119",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6120",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6121",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6122",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6123",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6124",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6125",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6126",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6127",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6128",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://WWW.HH520.COM/xi.php?id=6129",
+      "category": "mixed_data",
+      "discovered_from": "https://www.hh520.com/"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=1",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=2",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=3",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=4",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=5",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=6",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=7",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=8",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=9",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=10",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=11",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=12",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=13",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10013.php?date=2026-09-04&changci=14",
+      "category": "asian_handicap_changes",
+      "discovered_from": "https://www.hh520.com/tx/7.php"
+    },
+    {
+      "url": "https://www.hh520.com",
+      "category": "match_list",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6116"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=1",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6116"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904001",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6116"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904001",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6116"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=2",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6117"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904002",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6117"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904002",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6117"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=3",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6118"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904003",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6118"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904003",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6118"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=4",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6119"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904004",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6119"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904004",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6119"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=5",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6120"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904005",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6120"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904005",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6120"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=6",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6121"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904006",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6121"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904006",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6121"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=7",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6122"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904007",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6122"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904007",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6122"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=8",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6123"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904008",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6123"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904008",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6123"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=9",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6124"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904009",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6124"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904009",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6124"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=10",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6125"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904010",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6125"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904010",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6125"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=11",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6126"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904011",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6126"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904011",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6126"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=12",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6127"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904012",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6127"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904012",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6127"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=13",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6128"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904013",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6128"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904013",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6128"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=14",
+      "category": "score_odds_changes",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6129"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10016.php?code=20260904014",
+      "category": "predicted_lineup",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6129"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10015.php?code=20260904014",
+      "category": "historical_lineup_ratings",
+      "discovered_from": "https://WWW.HH520.COM/xi.php?id=6129"
+    },
+    {
+      "url": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=15",
+      "category": "score_odds_changes",
+      "discovered_from": "https://www.hh520.com/tx/10017.php?riqi=2026-09-04&changci=14"
+    }
+  ],
+  "failures": [],
+  "truncated": false
+}
